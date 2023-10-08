@@ -172,6 +172,8 @@
     python3
     jdk17
     nmap
+    bat
+    htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

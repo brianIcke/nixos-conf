@@ -87,7 +87,10 @@
   programs.zsh = {
     enable = true;
     initExtra = "neofetch";
-    shellAliases = {};
+    shellAliases = {
+      cat = "bat";
+      top = "htop";
+    };
 
     oh-my-zsh = {
       enable = true;
