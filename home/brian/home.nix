@@ -26,6 +26,7 @@
     
     discord
     chromium
+    keepassxc
     minecraft
     prismlauncher-qt5
     steam

@@ -160,6 +160,13 @@
   # Enable ZSH system-wide
   programs.zsh.enable = true;
 
+  # Enable Yubikey support for GPG and SSH
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   # Enable dconf, so GTK Themes get applied to wayland applications
   programs.dconf.enable = true;
 
