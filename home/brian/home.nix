@@ -25,12 +25,12 @@
     # pkgs.hello
     
     discord
+    chromium
     minecraft
     prismlauncher-qt5
     steam
     lutris
     vscode
-    virtualbox
     neovim
     neofetch
     libreoffice-qt

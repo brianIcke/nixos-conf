@@ -36,7 +36,7 @@
 
       nixosConfigurations = {
         BrianTUX = lib.nixosSystem {
-	  inherit system;
+	  inherit pkgs system;
 
           modules = [
            ./system/configuration.nix 
