@@ -91,12 +91,16 @@
   # Bluetooth support
   hardware.bluetooth.enable = true;
 
+  # Enable SDDM display manager
+  #services.xserver.displayManager.sddm.enable = true;
+
+  # Enable LightDM display manager
+  services.xserver.displayManager.lightdm.enable = true;
+
+  services.xserver.displayManager.defaultSession = "plasmawayland";
 
   # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
   services.xserver.desktopManager.plasma5.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -181,6 +185,7 @@
     nmap
     bat
     htop
+    alsa-utils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
