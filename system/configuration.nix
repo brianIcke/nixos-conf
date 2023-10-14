@@ -164,6 +164,12 @@
   # Enable ZSH system-wide
   programs.zsh.enable = true;
 
+  # Neovim configuration
+  #programs.nixvim = {
+  #  enable = true;
+  #  colorschemes.tokyonight.enable = true;
+  #};
+
   # Enable Yubikey support for GPG and SSH
   services.udev.packages = [ pkgs.yubikey-personalization ];
   programs.gnupg.agent = {
@@ -185,6 +191,7 @@
     nmap
     bat
     htop
+    xclip
     alsa-utils
   ];
 

@@ -4,9 +4,10 @@ config=$1
 if [ $config == "home" ]
 then
 	echo "Building HomeManager configuration..."
-	sudo nix build .#homeManagerConfigurations.brian.activationPackage && \
-	echo "Activating HomeManager configuration..." && \
-	./result/activate
+	home-manager switch --flake .#brian@BrianTUX 
+	#sudo nix build .#homeManagerConfigurations.brian.activationPackage && \
+	#echo "Activating HomeManager configuration..." && \
+	#./result/activate
 elif [ $config == "system" ]
 then
 	echo "Building system configuration..."

@@ -32,7 +32,6 @@
     steam
     lutris
     vscode
-    neovim
     neofetch
     libreoffice-qt
     hunspell
@@ -115,6 +114,31 @@
       }
    ];
 
+  };
+
+  # Neovim config
+  programs.nixvim = {
+    enable = true;
+    colorschemes.tokyonight.enable = true;
+
+    # Use system clipboard
+    clipboard.register += "unnamedplus";
+    
+    options = {
+      number = true;
+      relativenumber = true;
+      fileencoding = "utf-8";
+      hlsearch = true;
+      ignorecase = true;
+      mouse = "a";
+      showtabline = 2;
+      smartcase = true;
+      smartindent = true;
+      undofile = true;
+      expandtab = true;
+      shiftwidth = 2;
+      tabstop = 2;
+    };
   };
 
   # Git config
