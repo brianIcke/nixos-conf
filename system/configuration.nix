@@ -168,6 +168,9 @@
   # Enable ZSH system-wide
   programs.zsh.enable = true;
 
+  # Enable tmux system-wide
+  programs.tmux.enable = true;
+
   # Neovim configuration
   #programs.nixvim = {
   #  enable = true;
@@ -206,11 +209,13 @@
   in
 
   with pkgs; [
+    alacritty
     vim 
     wget
     curl
     (python311.withPackages python-packages)
     jdk17
+    godot_4
     nmap
     bat
     htop
