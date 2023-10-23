@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
     ];
 
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -90,6 +91,9 @@
 
   # Bluetooth support
   hardware.bluetooth.enable = true;
+
+  # Steam
+  programs.steam.enable = true;
 
   # Enable SDDM display manager
   #services.xserver.displayManager.sddm.enable = true;
@@ -182,17 +186,38 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+
+  environment.systemPackages =
+
+  let
+    #Wallpaper Engine Plugin
+    wallpaper-engine-plasma = pkgs.plasma5Packages.callPackage ./pkgs/wallpaper-engine-plasma-plugin.nix {
+      inherit (pkgs.gst_all_1) gst-libav;
+      inherit (pkgs.python311Packages) websockets;
+      #inherit (pkgs.libsForQt5.qt5.qtwebsockets) qtwebsockets;
+    };
+
+    # Python packages
+    python-packages = ps: with ps; [
+      websockets
+      pandas
+      numpy
+    ];
+  in
+
+  with pkgs; [
     vim 
     wget
     curl
-    python3
+    (python311.withPackages python-packages)
     jdk17
     nmap
     bat
     htop
     xclip
     alsa-utils
+    libsForQt5.qt5.qtwebsockets
+    wallpaper-engine-plasma
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

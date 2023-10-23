@@ -29,7 +29,6 @@
     keepassxc
     minecraft
     prismlauncher-qt5
-    steam
     lutris
     vscode
     neofetch
@@ -122,7 +121,7 @@
     colorschemes.tokyonight.enable = true;
 
     # Use system clipboard
-    clipboard.register += "unnamedplus";
+    clipboard.register = "unnamedplus";
     
     options = {
       number = true;
