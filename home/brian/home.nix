@@ -122,6 +122,29 @@
 
     # Use system clipboard
     clipboard.register = "unnamedplus";
+
+    # Plugins
+    plugins.airline = {
+      enable = true;
+      theme = "deus";
+    };
+
+    # LSP
+    plugins.lsp.enable = true;
+    plugins.lsp.servers = {
+      bashls = {
+        enable = true;
+      };
+      clangd = {
+        enable = true;
+      };
+      pyright = {
+        enable = true;
+      };
+      rnix-lsp = {
+        enable = true;
+      };
+    };
     
     options = {
       number = true;

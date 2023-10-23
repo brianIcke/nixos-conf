@@ -89,6 +89,14 @@
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
 
+  # Fonts
+  fonts.fonts = with pkgs; [
+  font-awesome
+  powerline-fonts
+  powerline-symbols
+  (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+  ];
+
   # Bluetooth support
   hardware.bluetooth.enable = true;
 
