@@ -223,6 +223,7 @@
     curl
     (python311.withPackages python-packages)
     jdk17
+    jetbrains.idea-community
     godot_4
     nmap
     bat
