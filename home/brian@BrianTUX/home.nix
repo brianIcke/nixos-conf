@@ -26,6 +26,7 @@
     
     discord
     chromium
+    dolphin-emu
     keepassxc
     minecraft
     prismlauncher-qt5
