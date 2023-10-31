@@ -55,7 +55,7 @@
 
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "de";
+    #keyMap = "de";
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
@@ -91,7 +91,7 @@
   #services.xserver.displayManager.lightdm.enable = true;
 
   # Enable GDM display manager
-  servives.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
 
   # Enable Budgie Desktop
   services.xserver.desktopManager.budgie.enable = true;
@@ -109,10 +109,11 @@
   # Enable daemon for fingerprint reader
   services.fprintd.enable = true;
   services.fprintd.tod.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
   # Enable sound.
   # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
 
   # Remove sound.enable or set it to false if you had it set previously, as sound.enable is only meant for ALSA-based configurations
 

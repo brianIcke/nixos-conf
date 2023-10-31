@@ -45,7 +45,20 @@
 
           modules = [
 	    # HomeManager configuration
-            ./home/brian/home.nix
+            (./. + "/home/brian@BrianTUX/home.nix")
+
+            # Other modules
+	    nixvim-hm
+  	];
+
+	};
+
+	"brian@tuxbook" = home-manager.lib.homeManagerConfiguration {
+	  inherit pkgs;
+
+          modules = [
+	    # HomeManager configuration
+            (./. + "/home/brian@tuxbook/home.nix")
 
             # Other modules
 	    nixvim-hm
@@ -56,12 +69,24 @@
       };
 
       nixosConfigurations = {
-        BrianTUX = lib.nixosSystem {
+        "BrianTUX" = lib.nixosSystem {
 	  inherit pkgs system;
 
           modules = [
 	   # System configuration
-           ./system/configuration.nix 
+           ./system/BrianTUX/configuration.nix 
+
+           # Other modules
+	   nixvim-nixos
+	  ];
+	};
+        
+         "tuxbook" = lib.nixosSystem {
+	  inherit pkgs system;
+
+          modules = [
+	   # System configuration
+           ./system/tuxbook/configuration.nix 
 
            # Other modules
 	   nixvim-nixos
