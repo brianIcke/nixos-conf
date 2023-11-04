@@ -31,7 +31,6 @@
     minecraft
     prismlauncher-qt5
     lutris
-    vscode
     neofetch
     libreoffice-qt
     hunspell
@@ -82,6 +81,20 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # VSCodium
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      ms-python.python
+      rust-lang.rust-analyzer
+      bbenoist.nix
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+    ];
+  };
   
   # ZSH
   programs.zsh = {
