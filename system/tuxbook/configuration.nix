@@ -199,6 +199,8 @@
     vim 
     wget
     curl
+    zip
+    unzip
     (python311.withPackages python-packages)
     jdk17
     jetbrains.idea-community
