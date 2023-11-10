@@ -93,6 +93,12 @@
       dracula-theme.theme-dracula
       vscodevim.vim
       yzhang.markdown-all-in-one
+      vadimcn.vscode-lldb
+      tamasfe.even-better-toml
+      serayuzgur.crates
+      redhat.vscode-yaml
+      adpyke.codesnap
+      esbenp.prettier-vscode
     ];
   };
   
