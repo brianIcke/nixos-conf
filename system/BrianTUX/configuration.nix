@@ -121,6 +121,20 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Printer drivers
+  services.printing.drivers = with pkgs;[
+    splix
+    samsung-unified-linux-driver
+    brgenml1lpr
+    brgenml1cupswrapper
+  ];
+
+  # Autodiscovery of network printers
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
   # Enable sound.
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
