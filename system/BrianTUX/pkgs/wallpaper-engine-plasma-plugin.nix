@@ -44,7 +44,7 @@ mkDerivation rec {
   ];
 
   postPatch = ''
-    rmdir src/backend_scene/third_party/glslang
+    rm -rf src/backend_scene/third_party/glslang
     ln -s ${glslang-submodule.src} src/backend_scene/third_party/glslang
   '';
 
@@ -53,6 +53,6 @@ mkDerivation rec {
     repo = pname;
     rev = "f972b2a24c9c3cc2d3e4f41d2ebd14f1473cebdf";
     fetchSubmodules = true;
-    sha256 = "a0iwxu/V6vNWftfjQE/mY0wO0lEtVIkQVNZypUT/fdI=";
+    sha256 = "BVtTnJA1RLUU/Tj7WI/80ja4pI8NezHCjKvB72VjrZk=";
   };
 }

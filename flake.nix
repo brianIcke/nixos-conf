@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     # HomeManager
     home-manager = {
@@ -19,15 +20,17 @@
   };
 
 
-  outputs = { nixpkgs, home-manager, nixvim, ... }: 
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixvim, ... }: 
     let
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
         inherit system;
-	# Allow non-free packages
-	config = { allowUnfree = true; };
+	    # Allow non-free packages
+	    config = { allowUnfree = true; };
       };
+
+      unstable = import nixpkgs-unstable { inherit system; };
 
       lib = nixpkgs.lib;
 
@@ -46,10 +49,11 @@
           modules = [
 	    # HomeManager configuration
             (./. + "/home/brian@BrianTUX/home.nix")
-
             # Other modules
 	    nixvim-hm
   	];
+
+    extraSpecialArgs = { inherit unstable; };
 
 	};
 

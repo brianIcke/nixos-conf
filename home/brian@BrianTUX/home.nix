@@ -1,4 +1,4 @@
-{ config, pkgs,  ... }:
+{ config, pkgs, unstable,  ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -24,8 +24,10 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     
+    unstable.AusweisApp2
     discord
     chromium
+    vlc
     dolphin-emu
     keepassxc
     minecraft
