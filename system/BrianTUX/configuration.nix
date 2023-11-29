@@ -123,8 +123,11 @@
 
   # Printer drivers
   services.printing.drivers = with pkgs;[
+    gutenprint
     splix
     samsung-unified-linux-driver
+    samsung-unified-linux-driver_1_00_37
+    brlaser
     brgenml1lpr
     brgenml1cupswrapper
   ];
@@ -236,6 +239,7 @@
     wget
     curl
     (python311.withPackages python-packages)
+    lua
     jdk17
     jetbrains.idea-community
     godot_4
@@ -246,6 +250,8 @@
     alsa-utils
     libsForQt5.qt5.qtwebsockets
     wallpaper-engine-plasma
+    wineWowPackages.staging
+    winetricks
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
