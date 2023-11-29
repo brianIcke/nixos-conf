@@ -26,6 +26,7 @@
     
     unstable.AusweisApp2
     discord
+    blender
     chromium
     vlc
     dolphin-emu
