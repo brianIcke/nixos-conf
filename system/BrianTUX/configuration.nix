@@ -90,7 +90,7 @@
   hardware.opengl.driSupport32Bit = true;
 
   # Fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
   font-awesome
   powerline-fonts
   powerline-symbols
@@ -104,10 +104,10 @@
   programs.steam.enable = true;
 
   # Enable SDDM display manager
-  #services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
 
   # Enable LightDM display manager
-  services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
 
   services.xserver.displayManager.defaultSession = "plasmawayland";
 
