@@ -26,6 +26,7 @@
     
     unstable.AusweisApp2
     discord
+    bruno
     blender
     chromium
     vlc
