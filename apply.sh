@@ -1,17 +1,31 @@
 #!/bin/sh
+apply_home()
+{
+	echo "Building HomeManager configuration..."
+	home-manager switch --flake .#brian@BrianTUX 
+
+  # Alternative method
+	#sudo nix build .#homeManagerConfigurations.brian.activationPackage && \
+	#echo "Activating HomeManager configuration..." && \
+	#./result/activate
+}
+
+apply_system()
+{
+	echo "Building system configuration..."
+	sudo nixos-rebuild switch --flake .
+}
+
 config=$1
 
 if [ $config == "home" ]
 then
-	echo "Building HomeManager configuration..."
-	home-manager switch --flake .#brian@BrianTUX 
-	#sudo nix build .#homeManagerConfigurations.brian.activationPackage && \
-	#echo "Activating HomeManager configuration..." && \
-	#./result/activate
+  apply_home &&
+  apply_system
 elif [ $config == "system" ]
 then
-	echo "Building system configuration..."
-	sudo nixos-rebuild switch --flake .
+  apply_system
 else
 	echo "Missing target. Use script with 'home' or 'system' as argument."
 fi
+
