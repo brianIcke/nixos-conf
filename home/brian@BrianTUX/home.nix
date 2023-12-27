@@ -26,6 +26,7 @@
     
     unstable.AusweisApp2
     discord
+    vesktop
     bruno
     blender
     chromium
