@@ -18,11 +18,14 @@ apply_system()
 
 config=$1
 
-if [ $config == "home" ]
+if [ -z "$config" ]
 then
   apply_home &&
   apply_system
-elif [ $config == "system" ]
+elif [ $config = "home" ]
+then
+  apply_home
+elif [ $config = "system" ]
 then
   apply_system
 else
