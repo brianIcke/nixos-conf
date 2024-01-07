@@ -22,11 +22,11 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   # VirtualBox support
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "brian" ];
+  #virtualisation.virtualbox.host.enable = true;
+  #users.extraGroups.vboxusers.members = [ "brian" ];
 
-  # VirtualBox extensions
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  ## VirtualBox extensions
+  #virtualisation.virtualbox.host.enableExtensionPack = true;
 
   # Nix flakes support
   nix.package = pkgs.nixFlakes;
@@ -63,18 +63,18 @@
   services.xserver.enable = true;
 
   # XDG desktop integration
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-       xdg-desktop-portal-wlr
-       xdg-desktop-portal-gtk
-     ];
-    };
-  };
+  #xdg = {
+  #  portal = {
+  #    enable = true;
+  #    extraPortals = with pkgs; [
+  #     xdg-desktop-portal-wlr
+  #     xdg-desktop-portal-gtk
+  #   ];
+  #  };
+  #};
 
   # Fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
   font-awesome
   powerline-fonts
   powerline-symbols
@@ -88,28 +88,33 @@
   #services.xserver.displayManager.sddm.enable = true;
 
   # Enable LightDM display manager
-  #services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
 
   # Enable GDM display manager
-  services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.displayManager.gdm.debug = true;
+  #services.xserver.displayManager.defaultSession = "budgie-desktop";
 
   # Enable Budgie Desktop
   services.xserver.desktopManager.budgie.enable = true;
+
+  # Enable GNOME Desktop
+  #services.xserver.desktopManager.gnome.enable = true;
 
   # Enable the Plasma 5 Desktop Environment.
   #services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
-  services.xserver.layout = "de";
-  services.xserver.xkbOptions = "eurosign:e,caps:escape";
+  services.xserver.xkb.layout = "de";
+  services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable daemon for fingerprint reader
-  services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
+  #services.fprintd.enable = true;
+  #services.fprintd.tod.enable = true;
+  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
   # Enable sound.
   # sound.enable = true;
