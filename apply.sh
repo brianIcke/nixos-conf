@@ -2,7 +2,7 @@
 apply_home()
 {
 	echo "Building HomeManager configuration..."
-	home-manager switch --flake .#brian@BrianTUX 
+	home-manager switch --flake . 
 
   # Alternative method
 	#sudo nix build .#homeManagerConfigurations.brian.activationPackage && \
