@@ -25,6 +25,9 @@
     # pkgs.hello
     
     unstable.AusweisApp2
+    hfsprogs
+    libgpod
+    strawberry
     discord
     vesktop
     bruno
