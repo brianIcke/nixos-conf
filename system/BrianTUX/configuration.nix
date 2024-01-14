@@ -121,6 +121,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable Samba support
+  services.samba.enable = true;
+
   # Printer drivers
   services.printing.drivers = with pkgs;[
     gutenprint
