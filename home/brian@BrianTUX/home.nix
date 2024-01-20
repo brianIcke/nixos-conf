@@ -29,9 +29,12 @@
     libgpod
     strawberry
     discord
-    vesktop
+    unstable.vesktop
     bruno
     blender
+    android-studio
+    jetbrains.idea-community
+    godot_4
     chromium
     vlc
     dolphin-emu
