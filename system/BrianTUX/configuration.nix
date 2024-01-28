@@ -237,7 +237,6 @@
   in
 
   with pkgs; [
-    alacritty
     vim 
     wget
     curl
