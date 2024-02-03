@@ -113,12 +113,9 @@
     ];
   };
   
-<<<<<<< Updated upstream
-=======
   # Alacritty
   programs.alacritty.enable = true;
   programs.alacritty.settings = { shell = {  program = /run/current-system/sw/bin/tmux;  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
->>>>>>> Stashed changes
   # ZSH
   programs.zsh = {
     enable = true;
