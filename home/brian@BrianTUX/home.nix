@@ -44,6 +44,7 @@
     lutris
     neofetch
     libreoffice-qt
+    texmaker
     hunspell
     hunspellDicts.de_DE
 
@@ -92,6 +93,9 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Enable TeXLive distribution
+  programs.texlive.enable = true;
 
   # VSCodium
   programs.vscode = {
