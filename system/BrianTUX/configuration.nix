@@ -197,7 +197,10 @@
   programs.zsh.enable = true;
 
   # Enable tmux system-wide
-  programs.tmux.enable = true;
+  programs.tmux= {
+    enable = true;
+    extraConfig = "set -g mouse";
+  };
 
   # Neovim configuration
   #programs.nixvim = {
