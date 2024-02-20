@@ -37,6 +37,7 @@
     godot_4
     chromium
     vlc
+    gimp
     dolphin-emu
     keepassxc
     minecraft
@@ -95,7 +96,22 @@
   programs.home-manager.enable = true;
 
   # Enable TeXLive distribution
-  programs.texlive.enable = true;
+  programs.texlive = {
+    enable = true;
+    extraPackages = tpkgs: {
+      inherit (tpkgs)
+        scheme-small
+	      fontawesome
+	      paracol
+	      tikz-cd
+	      tikz-3dplot
+	      smartdiagram
+	      xstring
+	      titlesec
+	      raleway
+	      ly1;
+    };
+  };
 
   # VSCodium
   programs.vscode = {
