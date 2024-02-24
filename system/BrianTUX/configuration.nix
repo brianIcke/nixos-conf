@@ -141,7 +141,11 @@
     nssmdns = true;
     openFirewall = true;
   };
-  # Enable sound.
+
+  # Flatpak support
+  services.flatpak.enable = true;
+
+  # Enable sound. (Pulseaudio)
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
 
@@ -197,7 +201,7 @@
   programs.zsh.enable = true;
 
   # Enable tmux system-wide
-  programs.tmux= {
+  programs.tmux = {
     enable = true;
     extraConfig = "set -g mouse";
   };
