@@ -259,6 +259,7 @@
     wallpaper-engine-plasma
     wineWowPackages.staging
     winetricks
+    usbutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
