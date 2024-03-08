@@ -113,6 +113,14 @@
     };
   };
 
+  # Enable Thunderbird
+  programs.thunderbird = {
+    enable = true;
+  };
+
+  # Thunderbird profile
+  programs.thunderbird.profiles.brian-nickel.isDefault = true;
+
   # VSCodium
   programs.vscode = {
     enable = true;
