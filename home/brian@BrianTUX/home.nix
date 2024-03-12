@@ -46,6 +46,7 @@
     neofetch
     libreoffice-qt
     texmaker
+    libsForQt5.ktouch
     hunspell
     hunspellDicts.de_DE
 
@@ -201,9 +202,6 @@
         enable = true;
       };
       pyright = {
-        enable = true;
-      };
-      rnix-lsp = {
         enable = true;
       };
     };
