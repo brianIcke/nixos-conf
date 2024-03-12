@@ -183,7 +183,7 @@
     isNormalUser = true;
     initialPassword = "p@ssw0rd";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "cdrom" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox-wayland
       git
@@ -199,6 +199,9 @@
 
   # Enable ZSH system-wide
   programs.zsh.enable = true;
+
+  # Enable K3b burning utility
+  programs.k3b.enable = true;
 
   # Enable tmux system-wide
   programs.tmux = {
