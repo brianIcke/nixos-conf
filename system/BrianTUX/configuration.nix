@@ -120,6 +120,18 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  # Enable virtual CUPS PDF printer.
+  services.printing.cups-pdf = {
+    enable = true;
+    instances = {
+      PDF = {
+        settings = {
+          Out = "\${HOME}/Dokumente/cups-pdf";
+          UserUMask = "0033";
+        };
+      };
+    };
+  };
 
   # Enable Samba support
   services.samba.enable = true;
