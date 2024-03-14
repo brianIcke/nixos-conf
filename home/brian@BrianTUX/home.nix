@@ -45,6 +45,7 @@
     lutris
     neofetch
     libreoffice-qt
+    onlyoffice-bin_7_5
     texmaker
     libsForQt5.ktouch
     hunspell
