@@ -138,9 +138,6 @@
       pyright = {
         enable = true;
       };
-      rnix-lsp = {
-        enable = true;
-      };
     };
     
     options = {
