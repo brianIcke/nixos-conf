@@ -78,6 +78,14 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Thunderbird
+  programs.thunderbird = {
+    enable = true;
+  };
+
+  # Thunderbird profile
+  programs.thunderbird.profiles.brian-nickel.isDefault = true;
   
   # ZSH
   programs.zsh = {
