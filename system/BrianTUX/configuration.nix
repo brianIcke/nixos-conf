@@ -109,6 +109,7 @@
 
   # Wireshark
   programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark-qt;
 
   # Enable SDDM display manager
   services.xserver.displayManager.sddm.enable = true;
