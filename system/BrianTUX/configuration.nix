@@ -107,6 +107,9 @@
   # Steam
   programs.steam.enable = true;
 
+  # Wireshark
+  programs.wireshark.enable = true;
+
   # Enable SDDM display manager
   services.xserver.displayManager.sddm.enable = true;
 
