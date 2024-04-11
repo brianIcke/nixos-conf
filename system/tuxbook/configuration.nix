@@ -63,15 +63,15 @@
   services.xserver.enable = true;
 
   # XDG desktop integration
-  #xdg = {
-  #  portal = {
-  #    enable = true;
-  #    extraPortals = with pkgs; [
-  #     xdg-desktop-portal-wlr
-  #     xdg-desktop-portal-gtk
-  #   ];
-  #  };
-  #};
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+       xdg-desktop-portal-wlr
+       xdg-desktop-portal-gtk
+     ];
+    };
+  };
 
   # Fonts
   fonts.packages = with pkgs; [
@@ -89,10 +89,10 @@
   hardware.bluetooth.enable = true;
 
   # Enable SDDM display manager
-  #services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
 
   # Enable LightDM display manager
-  services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
 
   # Enable GDM display manager
   #services.xserver.displayManager.gdm.enable = true;
@@ -100,13 +100,13 @@
   #services.xserver.displayManager.defaultSession = "budgie-desktop";
 
   # Enable Budgie Desktop
-  services.xserver.desktopManager.budgie.enable = true;
+  #services.xserver.desktopManager.budgie.enable = true;
 
   # Enable GNOME Desktop
   #services.xserver.desktopManager.gnome.enable = true;
 
   # Enable the Plasma 5 Desktop Environment.
-  #services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";
