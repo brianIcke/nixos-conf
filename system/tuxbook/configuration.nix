@@ -25,6 +25,12 @@
   #virtualisation.virtualbox.host.enable = true;
   #users.extraGroups.vboxusers.members = [ "brian" ];
 
+  # Libvirtd 
+  virtualisation.libvirtd.enable = true;
+  
+  # Virt-manager
+  programs.virt-manager.enable = true;
+
   ## VirtualBox extensions
   #virtualisation.virtualbox.host.enableExtensionPack = true;
 
