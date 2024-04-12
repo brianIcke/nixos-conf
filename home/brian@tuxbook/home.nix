@@ -28,6 +28,7 @@
     chromium
     keepassxc
     vscode
+    vlc
     neofetch
     libreoffice-qt
     hunspell
