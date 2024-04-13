@@ -164,7 +164,7 @@
     isNormalUser = true;
     initialPassword = "p@ssw0rd";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       git
