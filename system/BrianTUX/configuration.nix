@@ -31,6 +31,12 @@
   # VirtualBox extensions
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
+  # Libvirtd 
+  virtualisation.libvirtd.enable = true;
+  
+  # Virt-manager
+  programs.virt-manager.enable = true;
+
   # Nix flakes support
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
