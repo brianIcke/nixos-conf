@@ -124,6 +124,14 @@
   # Thunderbird profile
   programs.thunderbird.profiles.brian-nickel.isDefault = true;
 
+  # KVM hypervisor connection
+  dconf.settings = {
+  "org/virt-manager/virt-manager/connections" = {
+    autoconnect = ["qemu:///system"];
+    uris = ["qemu:///system"];
+    };
+  };
+
   # VSCodium
   programs.vscode = {
     enable = true;
