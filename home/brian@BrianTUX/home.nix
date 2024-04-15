@@ -29,6 +29,7 @@
     libgpod
     strawberry
     discord
+    filezilla
     unstable.vesktop
     bruno
     blender
