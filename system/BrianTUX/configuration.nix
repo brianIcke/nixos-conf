@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
     ];
 
 
@@ -36,6 +37,9 @@
   
   # Virt-manager
   programs.virt-manager.enable = true;
+
+  # OnlyOffice
+  programs.onlyoffice.enable = true;
 
   # Nix flakes support
   nix.package = pkgs.nixFlakes;
