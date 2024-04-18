@@ -26,11 +26,17 @@
 
       pkgs = import nixpkgs {
         inherit system;
-	    # Allow non-free packages
-	    config = { allowUnfree = true; };
+	      
+        # Allow non-free packages
+	      config = { allowUnfree = true; };
       };
 
-      unstable = import nixpkgs-unstable { inherit system; };
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        
+        # Allow non-free packages
+	      config = { allowUnfree = true; };
+      };
 
       lib = nixpkgs.lib;
 
