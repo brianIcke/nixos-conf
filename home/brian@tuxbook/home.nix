@@ -25,6 +25,8 @@
     # pkgs.hello
     
     discord
+    unstable.AusweisApp2
+    unstable.breitbandmessung
     chromium
     keepassxc
     vscode
