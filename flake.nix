@@ -74,6 +74,8 @@
 	    nixvim-hm
   	];
 
+    extraSpecialArgs = { inherit unstable; };
+
 	};
 
       };
