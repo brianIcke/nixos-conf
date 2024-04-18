@@ -222,6 +222,7 @@
     nmap
     bat
     htop
+    nodejs_20
     xclip
     alsa-utils
   ];
