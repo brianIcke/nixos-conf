@@ -148,6 +148,9 @@
       redhat.vscode-yaml
       adpyke.codesnap
       esbenp.prettier-vscode
+      bradlc.vscode-tailwindcss
+      pkief.material-icon-theme
+      mikestead.dotenv
     ];
   };
   
