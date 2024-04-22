@@ -131,6 +131,29 @@
 
   };
 
+  # VSCodium
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      ms-python.python
+      rust-lang.rust-analyzer
+      bbenoist.nix
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+      vadimcn.vscode-lldb
+      tamasfe.even-better-toml
+      serayuzgur.crates
+      redhat.vscode-yaml
+      adpyke.codesnap
+      esbenp.prettier-vscode
+      bradlc.vscode-tailwindcss
+      pkief.material-icon-theme
+      mikestead.dotenv
+    ];
+  };
+
   # Neovim config
   programs.nixvim = {
     enable = true;
