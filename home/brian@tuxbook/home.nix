@@ -29,7 +29,6 @@
     unstable.breitbandmessung
     chromium
     keepassxc
-    vscode
     vlc
     neofetch
     libreoffice-qt
