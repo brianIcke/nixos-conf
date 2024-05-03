@@ -38,6 +38,7 @@
     godot_4
     chromium
     vlc
+    fzf
     gimp
     dolphin-emu
     keepassxc
@@ -171,6 +172,7 @@
       enable = true;
       plugins = [
         "git"
+        "fzf"
       ];
 
       theme = "bira";
