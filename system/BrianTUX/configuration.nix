@@ -83,9 +83,15 @@
     portal = {
       enable = true;
       extraPortals = with pkgs; [
-       xdg-desktop-portal-wlr
        xdg-desktop-portal-gtk
      ];
+     config = {
+        common = {
+          default = [
+            "gtk"
+          ];
+        };
+      };
     };
   };
 
@@ -127,10 +133,13 @@
   # Enable LightDM display manager
   #services.xserver.displayManager.lightdm.enable = true;
 
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  #services.xserver.displayManager.defaultSession = "plasmawayland";
 
   # Enable the Plasma 5 Desktop Environment.
-  services.xserver.desktopManager.plasma5.enable = true;
+  #services.xserver.desktopManager.plasma5.enable = true;
+
+  # Enable BSPWM
+  services.xserver.windowManager.bspwm.enable = true;
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -285,6 +294,10 @@
     jdk17
     nmap
     bat
+    feh
+    dunst
+    rofi
+    polybar
     htop
     nodejs_20
     xclip
