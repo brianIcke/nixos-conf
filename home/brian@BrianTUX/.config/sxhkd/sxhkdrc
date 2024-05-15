@@ -2,6 +2,26 @@
 # wm independent hotkeys
 #
 
+# Volume
+{XF86AudioRaiseVolume,XF86AudioLowerVolume}
+	pactl -- set-sink-volume 0 {+10%,-10%}
+
+# Mute
+XF86AudioMute
+	pactl -- set-sink-mute 0 toggle
+
+# Shutdown/Reboot/Logoff
+super + ctrl + alt + {p,r,l}
+	systemctl {poweroff,reboot,logoff}
+
+# Toggle keyboard layout
+super + q
+	(setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap de || setxkbmap us
+
+# Firefox
+super + alt + f
+	firefox
+
 # terminal emulator
 super + Return
 	alacritty
