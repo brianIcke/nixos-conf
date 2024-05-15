@@ -22,3 +22,15 @@ bspc config window_gap          12
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
+
+# Application rules
+bspc rule -a firefox desktop=^2 follow=on --one-shot
+bspc rule -a Alacritty desktop=^6 follow=off --one-shot
+bspc rule -a thunderbird desktop=^7 follow=on
+bspc rule -a vesktop desktop=^8 follow=off
+
+# Autostart
+pgrep firefox || firefox&
+pgrep alacritty || alacritty&
+pgrep vesktop || vesktop&
+pgrep thunderbird || thunderbird&
