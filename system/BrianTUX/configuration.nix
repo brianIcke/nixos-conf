@@ -302,6 +302,7 @@
     nodejs_20
     xclip
     alsa-utils
+    pulseaudio
     libsForQt5.qt5.qtwebsockets
     wallpaper-engine-plasma
     wineWowPackages.staging
