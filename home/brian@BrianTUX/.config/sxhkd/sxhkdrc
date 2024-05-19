@@ -22,6 +22,10 @@ super + q
 super + alt + f
 	firefox
 
+# Thunar
+super + alt + t
+	thunar
+
 # terminal emulator
 super + Return
 	alacritty
