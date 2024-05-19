@@ -78,6 +78,9 @@
   # Video driver
   services.xserver.videoDrivers = [ "amdgpu" ];
 
+  # Udisk2 service
+  services.udisks2.enable = true;
+
   # XDG desktop integration
   xdg = {
     portal = {
@@ -242,6 +245,12 @@
   # Enable K3b burning utility
   programs.k3b.enable = true;
 
+  # Enable Thunar file manager
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+  };
+
   # Enable tmux system-wide
   programs.tmux = {
     enable = true;
@@ -308,6 +317,7 @@
     wineWowPackages.staging
     winetricks
     usbutils
+    udiskie
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
