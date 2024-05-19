@@ -10,6 +10,9 @@ sh $HOME/.config/polybar/launch.sh
 # Launch dunst
 dunst &
 
+# Launch udiskie
+udiskie &
+
 # Set wallpaper
 feh --bg-scale $HOME/.config/bspwm/bg.jpg
 
