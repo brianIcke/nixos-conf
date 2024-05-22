@@ -297,6 +297,7 @@
   with pkgs; [
     vim 
     wget
+    xfce.xfce4-power-manager
     curl
     (python311.withPackages python-packages)
     lua
