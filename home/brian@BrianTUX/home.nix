@@ -28,6 +28,7 @@
     hfsprogs
     libgpod
     strawberry
+    calibre
     discord
     filezilla
     unstable.vesktop
