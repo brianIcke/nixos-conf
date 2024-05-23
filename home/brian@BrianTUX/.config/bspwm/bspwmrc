@@ -13,6 +13,9 @@ dunst &
 # Launch udiskie
 udiskie &
 
+# Launch xfce4 power manager
+xfce4-power-manager &
+
 # Set wallpaper
 feh --bg-scale $HOME/.config/bspwm/bg.jpg
 
