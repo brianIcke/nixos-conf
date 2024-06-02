@@ -40,6 +40,7 @@
     chromium
     vlc
     fzf
+    zoxide
     gimp
     dolphin-emu
     keepassxc
@@ -138,7 +139,9 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
+      astro-build.astro-vscode
       ms-python.python
       rust-lang.rust-analyzer
       bbenoist.nix
@@ -163,10 +166,11 @@
   # ZSH
   programs.zsh = {
     enable = true;
-    initExtra = "neofetch";
+    initExtra = "neofetch\neval \"$(zoxide init zsh)\"";
     shellAliases = {
       cat = "bat";
       top = "htop";
+      cd = "z";
     };
 
     oh-my-zsh = {
