@@ -143,6 +143,7 @@
     extensions = with pkgs.vscode-extensions; [
       astro-build.astro-vscode
       ms-python.python
+      ms-vscode.cpptools
       rust-lang.rust-analyzer
       bbenoist.nix
       dracula-theme.theme-dracula
