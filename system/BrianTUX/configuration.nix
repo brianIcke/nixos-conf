@@ -131,7 +131,7 @@
   programs.wireshark.package = pkgs.wireshark-qt;
 
   # Enable SDDM display manager
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
 
   # Enable LightDM display manager
   #services.xserver.displayManager.lightdm.enable = true;
@@ -145,8 +145,10 @@
   services.xserver.windowManager.bspwm.enable = true;
 
   # Configure keymap in X11
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e,caps:escape";
+  services.xserver.xkb = {
+    layout = "us";
+    options = "eurosign:e,caps:escape";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -180,7 +182,7 @@
   # Autodiscovery of network printers
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
 
@@ -236,7 +238,7 @@
 
   # Environment variables
   environment.sessionVariables = {
-    MOZ_ENABLE_WAYLAND = "1";
+  #  MOZ_ENABLE_WAYLAND = "1";
   };
 
   # Enable ZSH system-wide
@@ -280,11 +282,11 @@
 
   let
     #Wallpaper Engine Plugin
-    wallpaper-engine-plasma = pkgs.plasma5Packages.callPackage ./pkgs/wallpaper-engine-plasma-plugin.nix {
-      inherit (pkgs.gst_all_1) gst-libav;
-      inherit (pkgs.python311Packages) websockets;
+   # wallpaper-engine-plasma = pkgs.plasma5Packages.callPackage ./pkgs/wallpaper-engine-plasma-plugin.nix {
+   #   inherit (pkgs.gst_all_1) gst-libav;
+   #   inherit (pkgs.python311Packages) websockets;
       #inherit (pkgs.libsForQt5.qt5.qtwebsockets) qtwebsockets;
-    };
+   # };
 
     # Python packages
     python-packages = ps: with ps; [
@@ -298,6 +300,7 @@
     vim 
     wget
     xfce.xfce4-power-manager
+    lightlocker
     curl
     (python311.withPackages python-packages)
     lua
@@ -313,8 +316,8 @@
     xclip
     alsa-utils
     pulseaudio
-    libsForQt5.qt5.qtwebsockets
-    wallpaper-engine-plasma
+    #libsForQt5.qt5.qtwebsockets
+    #wallpaper-engine-plasma
     wineWowPackages.staging
     winetricks
     usbutils
