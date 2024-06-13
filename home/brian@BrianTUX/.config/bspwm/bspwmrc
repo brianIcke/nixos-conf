@@ -14,6 +14,7 @@ dunst &
 udiskie &
 
 # Launch xfce4 power manager
+light-locker &
 xfce4-power-manager &
 
 # Set wallpaper
