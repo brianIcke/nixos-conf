@@ -44,8 +44,7 @@
     gimp
     dolphin-emu
     keepassxc
-    minecraft
-    prismlauncher-qt5
+    prismlauncher
     lutris
     neofetch
     libreoffice-qt
@@ -210,7 +209,9 @@
     # Plugins
     plugins.airline = {
       enable = true;
-      theme = "deus";
+      settings = {
+        theme = "deus";
+      };
     };
 
     # LSP
@@ -227,7 +228,7 @@
       };
     };
     
-    options = {
+    opts = {
       number = true;
       relativenumber = true;
       fileencoding = "utf-8";
