@@ -95,7 +95,7 @@
   hardware.bluetooth.enable = true;
 
   # Enable SDDM display manager
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
 
   # Enable LightDM display manager
   #services.xserver.displayManager.lightdm.enable = true;
@@ -112,11 +112,13 @@
   #services.xserver.desktopManager.gnome.enable = true;
 
   # Enable the Plasma 5 Desktop Environment.
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb.layout = "de";
-  services.xserver.xkb.options = "eurosign:e,caps:escape";
+  services.xserver.xkb = {
+    layout = "de";
+    options = "eurosign:e,caps:escape";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -128,9 +130,19 @@
 
   # Enable sound.
   # sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  # hardware.pulseaudio.enable = true;
 
   # Remove sound.enable or set it to false if you had it set previously, as sound.enable is only meant for ALSA-based configurations
+
+  # Autodiscovery of network printers
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  # Flatpak support
+  services.flatpak.enable = true;
 
   # Pipewire support
   # rtkit is optional but recommended
@@ -166,7 +178,7 @@
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox
+      firefox-wayland
       git
       tree
     ];
@@ -174,14 +186,18 @@
 
 
   # Environment variables
-  #environment.sessionVariables = {
-  #};
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+  };
 
   # Enable ZSH system-wide
   programs.zsh.enable = true;
 
   # Enable tmux system-wide
-  programs.tmux.enable = true;
+  programs.tmux = {
+    enable = true;
+    extraConfig = "set -g mouse";
+  };
 
   # Neovim configuration
   #programs.nixvim = {
@@ -210,7 +226,6 @@
   in
 
   with pkgs; [
-    alacritty
     vim 
     wget
     curl
@@ -225,6 +240,8 @@
     nodejs_20
     xclip
     alsa-utils
+    pulseaudio
+    usbutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
