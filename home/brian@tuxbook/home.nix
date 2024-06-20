@@ -116,6 +116,10 @@
 
     };
 
+    # Alacritty
+    programs.alacritty.enable = true;
+    programs.alacritty.settings = { shell = {  program = /run/current-system/sw/bin/tmux;  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
+
     plugins = [
       {
         name = "zsh-autosuggestions";
