@@ -303,6 +303,7 @@
     lightlocker
     curl
     (python311.withPackages python-packages)
+    go
     lua
     jdk17
     nmap
