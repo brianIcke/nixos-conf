@@ -142,6 +142,7 @@
     extensions = with pkgs.vscode-extensions; [
       astro-build.astro-vscode
       ms-python.python
+      golang.go
       ms-vscode.cpptools
       rust-lang.rust-analyzer
       bbenoist.nix
