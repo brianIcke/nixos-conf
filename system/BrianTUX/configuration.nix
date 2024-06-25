@@ -227,7 +227,7 @@
     isNormalUser = true;
     initialPassword = "p@ssw0rd";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "cdrom" "libvirtd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "cdrom" "libvirtd" "dialout" "wireshark" ];
     packages = with pkgs; [
       firefox-wayland
       git
