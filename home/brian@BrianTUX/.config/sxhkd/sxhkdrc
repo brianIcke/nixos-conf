@@ -11,8 +11,8 @@ XF86AudioMute
 	pactl -- set-sink-mute 0 toggle
 
 # Shutdown/Reboot/Logoff
-super + ctrl + alt + {p,r,l}
-	systemctl {poweroff,reboot,logoff}
+super + ctrl + alt + {p,r}
+	systemctl {poweroff,reboot}
 
 # Toggle keyboard layout
 super + q
