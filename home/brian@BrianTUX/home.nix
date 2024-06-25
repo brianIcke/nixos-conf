@@ -29,7 +29,6 @@
     libgpod
     strawberry
     calibre
-    discord
     filezilla
     unstable.vesktop
     bruno
@@ -49,7 +48,6 @@
     neofetch
     libreoffice-qt
     gh
-    texmaker
     libsForQt5.ktouch
     hunspell
     hunspellDicts.de_DE
@@ -100,23 +98,23 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Enable TeXLive distribution
-  programs.texlive = {
-    enable = true;
-    extraPackages = tpkgs: {
-      inherit (tpkgs)
-        scheme-small
-	      fontawesome
-	      paracol
-	      tikz-cd
-	      tikz-3dplot
-	      smartdiagram
-	      xstring
-	      titlesec
-	      raleway
-	      ly1;
-    };
-  };
+#  # Enable TeXLive distribution
+#  programs.texlive = {
+#    enable = true;
+#    extraPackages = tpkgs: {
+#      inherit (tpkgs)
+#        scheme-small
+#	      fontawesome
+#	      paracol
+#	      tikz-cd
+#	      tikz-3dplot
+#	      smartdiagram
+#	      xstring
+#	      titlesec
+#	      raleway
+#	      ly1;
+#    };
+#  };
 
   # Enable Thunderbird
   programs.thunderbird = {
@@ -164,6 +162,7 @@
   # Alacritty
   programs.alacritty.enable = true;
   programs.alacritty.settings = { shell = {  program = /run/current-system/sw/bin/tmux;  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
+
   # ZSH
   programs.zsh = {
     enable = true;
@@ -210,9 +209,6 @@
     # Plugins
     plugins.airline = {
       enable = true;
-      settings = {
-        theme = "deus";
-      };
     };
 
     # LSP
