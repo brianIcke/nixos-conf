@@ -139,6 +139,7 @@
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       astro-build.astro-vscode
+      redhat.ansible
       ms-python.python
       golang.go
       ms-vscode.cpptools
