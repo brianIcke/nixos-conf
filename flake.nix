@@ -86,7 +86,7 @@
 
           modules = [
 	   # System configuration
-           ./system/BrianTUX/configuration.nix 
+           ./system/BrianTUX 
 
            # Other modules
 	   nixvim-nixos

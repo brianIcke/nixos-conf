@@ -6,24 +6,17 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
+    [ 
+      # Global modules
+      ../global
+
+      # Local modules
+      ./hardware-configuration.nix # Include the results of the hardware scan.
+      ../modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
     ];
-
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel modules
   boot.initrd.kernelModules = [ "amdgpu" ];
-
-  # Enable plymouth
-  #boot.plymouth.enable = true;
-
-  # NTFS support
-  boot.supportedFilesystems = [ "ntfs" ];
 
   # VirtualBox support
   virtualisation.virtualbox.host.enable = true;
@@ -41,12 +34,6 @@
   # OnlyOffice
   programs.onlyoffice.enable = true;
 
-  # Nix flakes support
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-
   networking.hostName = "BrianTUX"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -58,13 +45,6 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "de_DE.UTF-8";
-  i18n.supportedLocales = [
-    "de_DE.UTF-8/UTF-8"
-    "en_US.UTF-8/UTF-8"
-  ];
 
   console = {
     font = "Lat2-Terminus16";
@@ -107,18 +87,6 @@
   # Vulkan support
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
-
-  # Fonts
-  fonts.packages = with pkgs; [
-  font-awesome
-  ubuntu_font_family
-  carlito
-  vistafonts
-  corefonts
-  powerline-fonts
-  powerline-symbols
-  (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-  ];
 
   # Bluetooth support
   hardware.bluetooth.enable = true;
@@ -235,14 +203,13 @@
     ];
   };
 
+  # Enable ZSH system wide
+  programs.zsh.enable = true;
 
   # Environment variables
   environment.sessionVariables = {
   #  MOZ_ENABLE_WAYLAND = "1";
   };
-
-  # Enable ZSH system-wide
-  programs.zsh.enable = true;
 
   # Enable K3b burning utility
   programs.k3b.enable = true;
@@ -251,25 +218,6 @@
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-  };
-
-  # Enable tmux system-wide
-  programs.tmux = {
-    enable = true;
-    extraConfig = "set -g mouse";
-  };
-
-  # Neovim configuration
-  #programs.nixvim = {
-  #  enable = true;
-  #  colorschemes.tokyonight.enable = true;
-  #};
-
-  # Enable Yubikey support for GPG and SSH
-  services.udev.packages = [ pkgs.yubikey-personalization ];
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
   };
 
   # Enable dconf, so GTK Themes get applied to wayland applications
@@ -287,42 +235,17 @@
    #   inherit (pkgs.python311Packages) websockets;
       #inherit (pkgs.libsForQt5.qt5.qtwebsockets) qtwebsockets;
    # };
-
-    # Python packages
-    python-packages = ps: with ps; [
-      websockets
-      pandas
-      numpy
-      ansible-core
-    ];
   in
 
   with pkgs; [
-    vim 
-    wget
     xfce.xfce4-power-manager
     lightlocker
-    curl
-    (python312.withPackages python-packages)
-    go
-    lua
-    jdk17
-    nmap
-    bat
     feh
     dunst
     rofi
     polybar
-    htop
-    nodejs_20
-    xclip
-    alsa-utils
-    pulseaudio
     #libsForQt5.qt5.qtwebsockets
     #wallpaper-engine-plasma
-    wineWowPackages.staging
-    winetricks
-    usbutils
     udiskie
   ];
 

@@ -199,6 +199,12 @@
 
   };
 
+  # Enable tmux
+  programs.tmux = {
+    enable = true;
+    extraConfig = "set -g mouse";
+  };
+
   # Neovim config
   programs.nixvim = {
     enable = true;
