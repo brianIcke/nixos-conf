@@ -293,6 +293,7 @@
       websockets
       pandas
       numpy
+      ansible-core
     ];
   in
 
@@ -302,7 +303,7 @@
     xfce.xfce4-power-manager
     lightlocker
     curl
-    (python311.withPackages python-packages)
+    (python312.withPackages python-packages)
     go
     lua
     jdk17
