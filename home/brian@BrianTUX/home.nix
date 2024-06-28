@@ -6,7 +6,7 @@
       # Global modules
       ../global
 
-      # Local modules
+      # Optional modules
       
     ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -32,34 +32,20 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     
-    unstable.AusweisApp2
     hfsprogs
     libgpod
     strawberry
     calibre
-    filezilla
-    unstable.vesktop
     bruno
     blender
     android-studio
     arduino-ide
     jetbrains.idea-community
     godot_4
-    chromium
-    vlc
-    fzf
-    zoxide
-    gimp
     dolphin-emu
-    keepassxc
     prismlauncher
     lutris
-    neofetch
-    libreoffice-qt
-    gh
     libsForQt5.ktouch
-    hunspell
-    hunspellDicts.de_DE
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -106,32 +92,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-#  # Enable TeXLive distribution
-#  programs.texlive = {
-#    enable = true;
-#    extraPackages = tpkgs: {
-#      inherit (tpkgs)
-#        scheme-small
-#	      fontawesome
-#	      paracol
-#	      tikz-cd
-#	      tikz-3dplot
-#	      smartdiagram
-#	      xstring
-#	      titlesec
-#	      raleway
-#	      ly1;
-#    };
-#  };
-
-  # Enable Thunderbird
-  programs.thunderbird = {
-    enable = true;
-  };
-
-  # Thunderbird profile
-  programs.thunderbird.profiles.brian-nickel.isDefault = true;
 
   # KVM hypervisor connection
   dconf.settings = {

@@ -3,6 +3,8 @@
 {
     imports =
     [
+        ./packages
+        ./thunderbird
         ./vscode
     ];
 }

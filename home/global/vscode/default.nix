@@ -10,6 +10,7 @@
       userSettings = {
         "platformio-ide.useBuiltinPIOCore" = "false";
         "workbench.colorTheme" = "Dracula Soft";
+        "workbench.iconTheme" = "material-icon-theme";
       };
 
       extensions = with pkgs.vscode-extensions; [
