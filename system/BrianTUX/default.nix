@@ -12,7 +12,7 @@
 
       # Local modules
       ./hardware-configuration.nix # Include the results of the hardware scan.
-      ../modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
+      ../optional/modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
     ];
 
   # Kernel modules

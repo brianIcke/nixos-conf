@@ -1,6 +1,14 @@
 { config, pkgs, unstable,  ... }:
 
 {
+  imports =
+    [ 
+      # Global modules
+      ../global
+
+      # Local modules
+      
+    ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "brian";
@@ -34,6 +42,7 @@
     bruno
     blender
     android-studio
+    arduino-ide
     jetbrains.idea-community
     godot_4
     chromium
@@ -131,38 +140,10 @@
     uris = ["qemu:///system"];
     };
   };
-
-  # VSCodium
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-    mutableExtensionsDir = false;
-    extensions = with pkgs.vscode-extensions; [
-      astro-build.astro-vscode
-      redhat.ansible
-      ms-python.python
-      golang.go
-      ms-vscode.cpptools
-      rust-lang.rust-analyzer
-      bbenoist.nix
-      dracula-theme.theme-dracula
-      vscodevim.vim
-      yzhang.markdown-all-in-one
-      vadimcn.vscode-lldb
-      tamasfe.even-better-toml
-      serayuzgur.crates
-      redhat.vscode-yaml
-      adpyke.codesnap
-      esbenp.prettier-vscode
-      bradlc.vscode-tailwindcss
-      pkief.material-icon-theme
-      mikestead.dotenv
-    ];
-  };
   
   # Alacritty
   programs.alacritty.enable = true;
-  programs.alacritty.settings = { shell = {  program = /run/current-system/sw/bin/tmux;  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
+  programs.alacritty.settings = { shell = {  program = /home/brian/.nix-profile/bin/tmux;  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
 
   # ZSH
   programs.zsh = {
