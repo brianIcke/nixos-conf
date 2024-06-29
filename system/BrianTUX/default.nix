@@ -10,9 +10,10 @@
       # Global modules
       ../global
 
-      # Local modules
+      # Optional modules
       ./hardware-configuration.nix # Include the results of the hardware scan.
       ../optional/modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
+      ../optional/docker
     ];
 
   # Kernel modules
