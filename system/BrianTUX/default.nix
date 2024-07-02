@@ -12,6 +12,7 @@
 
       # Optional modules
       ./hardware-configuration.nix # Include the results of the hardware scan.
+      ../optional/hyprland
       ../optional/modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
       ../optional/docker
     ];
@@ -28,6 +29,7 @@
 
   # Libvirtd 
   virtualisation.libvirtd.enable = true;
+  users.extraGroups.libvirtd.members = [ "brian" ]; # Add brian to libvirtd group
   
   # Virt-manager
   programs.virt-manager.enable = true;
@@ -39,6 +41,9 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+  # Firewall
+  networking.firewall.allowedTCPPorts = [ 8080 1883 ];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -59,26 +64,6 @@
   # Video driver
   services.xserver.videoDrivers = [ "amdgpu" ];
 
-  # Udisk2 service
-  services.udisks2.enable = true;
-
-  # XDG desktop integration
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-       xdg-desktop-portal-gtk
-     ];
-     config = {
-        common = {
-          default = [
-            "gtk"
-          ];
-        };
-      };
-    };
-  };
-
   # OpenCL utils
   hardware.opengl.extraPackages = with pkgs; [
     rocm-opencl-icd
@@ -98,20 +83,7 @@
   # Wireshark
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark-qt;
-
-  # Enable SDDM display manager
-  services.displayManager.sddm.enable = true;
-
-  # Enable LightDM display manager
-  #services.xserver.displayManager.lightdm.enable = true;
-
-  #services.xserver.displayManager.defaultSession = "plasmawayland";
-
-  # Enable the Plasma 5 Desktop Environment.
-  #services.xserver.desktopManager.plasma5.enable = true;
-
-  # Enable BSPWM
-  services.xserver.windowManager.bspwm.enable = true;
+  users.extraGroups.wireshark.members = [ "brian" ]; # Add brian to wireshark group
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -136,17 +108,6 @@
 
   # Enable Samba support
   services.samba.enable = true;
-
-  # Printer drivers
-  services.printing.drivers = with pkgs;[
-    gutenprint
-    splix
-    samsung-unified-linux-driver
-    samsung-unified-linux-driver_1_00_37
-    brlaser
-    brgenml1lpr
-    brgenml1cupswrapper
-  ];
 
   # Autodiscovery of network printers
   services.avahi = {
@@ -196,7 +157,7 @@
     isNormalUser = true;
     initialPassword = "p@ssw0rd";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "cdrom" "libvirtd" "dialout" "wireshark" ];
+    extraGroups = [ "wheel" "dialout" ];
     packages = with pkgs; [
       firefox-wayland
       git
@@ -209,17 +170,12 @@
 
   # Environment variables
   environment.sessionVariables = {
-  #  MOZ_ENABLE_WAYLAND = "1";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   # Enable K3b burning utility
   programs.k3b.enable = true;
-
-  # Enable Thunar file manager
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-  };
+  users.extraGroups.cdrom.members = [ "brian" ]; # Add brian to cdrom group
 
   # Enable dconf, so GTK Themes get applied to wayland applications
   programs.dconf.enable = true;
@@ -239,15 +195,8 @@
   in
 
   with pkgs; [
-    xfce.xfce4-power-manager
-    lightlocker
-    feh
-    dunst
-    rofi
-    polybar
     #libsForQt5.qt5.qtwebsockets
     #wallpaper-engine-plasma
-    udiskie
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
