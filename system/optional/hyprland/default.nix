@@ -21,7 +21,7 @@
     udiskie
     dunst
     dolphin
-    network-manager-applet
+    networkmanagerapplet
     hyprpaper
     wofi
     wofi-emoji
