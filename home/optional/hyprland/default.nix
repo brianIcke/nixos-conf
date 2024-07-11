@@ -32,8 +32,8 @@
       border_size = 2;
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-      col.active_border = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-      col.inactive_border = "rgba(595959aa)";
+      "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+      "col.inactive_border" = "rgba(595959aa)";
 
       # Set to true enable resizing windows by clicking and dragging on borders and gaps
       resize_on_border = false; 
@@ -52,10 +52,10 @@
         drop_shadow = true;
         shadow_range = 4;
         shadow_render_power = 3;
-        col.shadow = "rgba(1a1a1aee)";
+        "col.shadow" = "rgba(1a1a1aee)";
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur
-        blur {
+        blur = {
             enabled = true;
             size = 3;
             passes = 1;
@@ -82,7 +82,134 @@
       ];
     };
 
+    # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+    dwindle = {
+        pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        preserve_split = true; # You probably want this
+    };
+    
+    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+    master = {
+        new_status = "master";
+    };
+    
+    # https://wiki.hyprland.org/Configuring/Variables/#misc
+    misc = { 
+        force_default_wallpaper = -1; # Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
+    };
+
+    # https://wiki.hyprland.org/Configuring/Variables/#input
+    input = {
+        kb_layout = "us,de";
+        kb_variant = ",qwerty";
+
+        follow_mouse = 1;
+
+        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+
+        touchpad = {
+            natural_scroll = false;
+        };
+    };
+
+    # https://wiki.hyprland.org/Configuring/Variables/#gestures
+    gestures = {
+        workspace_swipe = false;
+    };
+
+    # Example per-device config
+    # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
+    device = {
+        name = "epic-mouse-v1";
+        sensitivity = -0.5;
+    };
+
+    #################
+    ###KEYBINDINGS###
+    #################
+
+    # See https://wiki.hyprland.org/Configuring/Keywords/
+
     # Set modifier key
     "$mod" = "SUPER";
+
+    bind = [
+      # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+      "$mod, Q, exec, $terminal"
+      "$mod, C, killactive,"
+      "$mod, M, exit,"
+      "$mod, E, exec, $fileManager"
+      "$mod, V, togglefloating,"
+      "$mod, R, exec, $menu"
+      "$mod, P, pseudo,"
+      "$mod, J, togglesplit,"
+
+      # Move focus with mod + arrow keys
+      "$mod, left, movefocus, l"
+      "$mod, right, movefocus, r"
+      "$mod, up, movefocus, u"
+      "$mod, down, movefocus, d"
+
+      # Workspaces
+      "$mod, T, workspace, name:thunderbird"
+      "$mod, D, workspace, name:discord"
+      "$mod, S, workspace, name:steam"
+
+      # Special workspaces
+      "$mod, H, togglespecialworkspace, magic"
+
+      # Applications
+      "$mod, F, exec, firefox"
+      "$mod, D, exec, pgrep vesktop || vesktop"
+      "$mod, S, exec, pgrep steam || steam"
+
+      # Scroll through existing workspaces with mod + scroll
+      "$mod, mouse_down, workspace, e+1"
+      "$mod, mouse_up, workspace, e-1"
+    ]
+    ++ (
+      # workspaces
+      # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+      builtins.concatLists (builtins.genList (
+          x: let
+            ws = let
+              c = (x + 1) / 10;
+            in
+              builtins.toString (x + 1 - (c * 10));
+            in [
+              "$mod, ${ws}, workspace, ${toString (x + 1)}"
+              "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+            ]
+          )
+          10)
+      );
+
+    bindm = [
+      # Move/resize windows with mod + LMB/RMB and dragging
+      "$mod, mouse:272, movewindow"
+      "$mod, mouse:273, resizewindow"
+    ];
+
+    ##############################
+    ### WINDOWS AND WORKSPACES ###
+    ##############################
+    
+    # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+    # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
+    
+    workspace = [
+      "name:thunderbird,monitor:DP-3"
+      "name:discord,monitor:DP-3"
+      "name:steam,monitor:DP-3"
+    ];
+
+    windowrulev2 = [
+      "workspace name:thunderbird, class:thunderbird"
+      "workspace name:discord, class:vesktop"
+      "workspace name:steam, class:steam"
+      "suppressevent maximize, class:.*"
+    ];
+    
   };
 }
