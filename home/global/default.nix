@@ -6,5 +6,6 @@
         ./packages
         ./thunderbird
         ./vscode
+        ./gtk
     ];
 }
