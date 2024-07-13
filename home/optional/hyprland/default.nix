@@ -15,8 +15,9 @@
       "nm-applet &"
       "dunst &"
       "udiskie &"
-      "waybar & hyprpaper &"
-      "firefox & thunderbird &"
+      "waybar & hyprpaper &" 
+      "[workspace 1] firefox &"
+      "thunderbird &"
     ]; 
 
     # Environment variables
@@ -121,7 +122,7 @@
     # Example per-device config
     # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
     device = {
-        name = "epic-mouse-v1";
+        name = "logitech-advanced-corded-mouse-m500s";
         sensitivity = -0.5;
     };
 
@@ -134,9 +135,12 @@
     # Set modifier key
     "$mod" = "SUPER";
 
+    # Set modifier key (power)
+    "$powerMod" = "Control_L&Alt_L";
+
     bind = [
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-      "$mod, Q, exec, $terminal"
+      "$mod, Q, exec, pgrep $terminal || $terminal"
       "$mod, C, killactive,"
       "$mod, M, exit,"
       "$mod, E, exec, $fileManager"
@@ -144,6 +148,7 @@
       "$mod, R, exec, $menu"
       "$mod, P, pseudo,"
       "$mod, J, togglesplit,"
+      "$mod, space, exec, hyprctl switchxkblayout keychron-q2 next"
 
       # Move focus with mod + arrow keys
       "$mod, left, movefocus, l"
@@ -155,6 +160,7 @@
       "$mod, T, workspace, name:thunderbird"
       "$mod, D, workspace, name:discord"
       "$mod, S, workspace, name:steam"
+      "$mod, Q, workspace, name:terminal"
 
       # Special workspaces
       "$mod, H, togglespecialworkspace, magic"
@@ -191,6 +197,12 @@
       "$mod, mouse:273, resizewindow"
     ];
 
+    binds = [
+      # Power options
+      "$powerMod, P, exec, systemctl poweroff"
+      "$powerMod, R, exec, systemctl reboot"
+    ];
+
     ##############################
     ### WINDOWS AND WORKSPACES ###
     ##############################
@@ -202,14 +214,17 @@
       "name:thunderbird,monitor:DP-3"
       "name:discord,monitor:DP-3"
       "name:steam,monitor:DP-3"
+      "name:terminal,monitor:DP-3"
     ];
 
     windowrulev2 = [
       "workspace name:thunderbird, class:thunderbird"
       "workspace name:discord, class:vesktop"
-      "workspace name:steam, class:steam"
+      "workspace name:steam focus:0, class:steam"
+      "workspace name:terminal, class:Alacritty"
       "suppressevent maximize, class:.*"
     ];
     
   };
+
 }
