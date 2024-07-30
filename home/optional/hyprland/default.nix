@@ -15,6 +15,7 @@
       "nm-applet &"
       "dunst &"
       "udiskie &"
+      "copyq --start-server &"
       "waybar & hyprpaper &" 
       "[workspace 1] firefox &"
       "thunderbird &"
@@ -145,6 +146,7 @@
       "$mod, M, exit,"
       "$mod, E, exec, $fileManager"
       "$mod, V, togglefloating,"
+      "$mod, return, fullscreen"
       "$mod, R, exec, $menu"
       "$mod, P, pseudo,"
       "$mod, J, togglesplit,"
@@ -160,6 +162,7 @@
       "$mod, T, workspace, name:thunderbird"
       "$mod, D, workspace, name:discord"
       "$mod, S, workspace, name:steam"
+      "$mod, G, workspace, name:game"
       "$mod, Q, workspace, name:terminal"
 
       # Special workspaces
@@ -214,13 +217,16 @@
       "name:thunderbird,monitor:DP-3"
       "name:discord,monitor:DP-3"
       "name:steam,monitor:DP-3"
+      "name:game,monitor:DP-2, border:false, rounding:false"
       "name:terminal,monitor:DP-3"
     ];
 
     windowrulev2 = [
       "workspace name:thunderbird, class:thunderbird"
       "workspace name:discord, class:vesktop"
-      "workspace name:steam focus:0, class:steam"
+      "workspace name:steam silent, class:steam"
+      "workspace name:game, class:^steam_app_\\\d+$"
+      "fullscreen, class:^steam_app_\\\d+$"
       "workspace name:terminal, class:Alacritty"
       "suppressevent maximize, class:.*"
     ];
