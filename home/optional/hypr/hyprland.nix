@@ -16,7 +16,7 @@
       "dunst &"
       "udiskie &"
       "copyq --start-server &"
-      "waybar & hyprpaper &" 
+      "waybar & hyprpaper & hypridle &" 
       "[workspace 1] firefox &"
       "thunderbird &"
     ]; 
@@ -151,6 +151,11 @@
       "$mod, P, pseudo,"
       "$mod, J, togglesplit,"
       "$mod, space, exec, hyprctl switchxkblayout keychron-q2 next"
+
+      # Media keys
+      ",XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
+      ",XF86AudioLowerVolume, exec, pactl set-sink-volume 0 -1%"
+      ",XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +1%"
 
       # Move focus with mod + arrow keys
       "$mod, left, movefocus, l"
