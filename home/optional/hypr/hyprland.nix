@@ -6,7 +6,7 @@
   wayland.windowManager.hyprland.settings = {
     # Set used programs
     "$terminal" = "alacritty";
-    "$fileManager" = "dolphin";
+    "$fileManager" = "thunar";
     "$menu" = "wofi --show drun";
 
     # Autostart
@@ -16,7 +16,7 @@
       "dunst &"
       "udiskie &"
       "copyq --start-server &"
-      "waybar & hyprpaper & hypridle &" 
+      "waybar & hyprpaper &" 
       "[workspace 1] firefox &"
       "thunderbird &"
     ]; 
