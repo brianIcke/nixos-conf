@@ -104,6 +104,15 @@
 	   nixvim-nixos
 	  ];
 	};
+
+         "workstation" = lib.nixosSystem {
+	  inherit pkgs system;
+
+          modules = [
+	   # System configuration
+           ./system/workstation/configuration.nix 
+	  ];
+	};
       };
     };
     
