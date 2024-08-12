@@ -20,25 +20,28 @@
   };
 
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixvim, ... }: 
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixvim, ... }:
     let
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
         inherit system;
-	      
+
         # Allow non-free packages
-	      config = { allowUnfree = true; };
+        config = { allowUnfree = true; };
       };
 
       unstable = import nixpkgs-unstable {
         inherit system;
-        
+
         # Allow non-free packages
-	      config = { allowUnfree = true; };
+        config = { allowUnfree = true; };
       };
 
       lib = nixpkgs.lib;
+
+      # Home Manager module
+      nixos-hm = home-manager.nixosModules.home-manager;
 
       # Nixvim NixOS module
       nixvim-nixos = nixvim.nixosModules.nixvim;
@@ -46,74 +49,94 @@
       # Nixvim HomeManager module
       nixvim-hm = nixvim.homeManagerModules.nixvim;
 
-    in {
+    in
+    {
 
-      homeConfigurations= {
-	"brian@BrianTUX" = home-manager.lib.homeManagerConfiguration {
-	  inherit pkgs;
+      homeConfigurations = {
 
+        "brian@BrianTUX" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
           modules = [
-	    # HomeManager configuration
-            (./. + "/home/brian@BrianTUX/home.nix")
+            # Home Manager configuration
+            (./. + "/home/brian@BrianTUX")
             # Other modules
-	    nixvim-hm
-  	];
+            nixvim-hm
+          ];
 
-    extraSpecialArgs = { inherit unstable; };
+          extraSpecialArgs = { inherit unstable; };
+        };
 
-	};
-
-	"brian@tuxbook" = home-manager.lib.homeManagerConfiguration {
-	  inherit pkgs;
-
+        "brian@tuxbook" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
           modules = [
-	    # HomeManager configuration
+            # Home Manager configuration
             (./. + "/home/brian@tuxbook/home.nix")
 
             # Other modules
-	    nixvim-hm
-  	];
+            nixvim-hm
+          ];
 
-    extraSpecialArgs = { inherit unstable; };
+          extraSpecialArgs = { inherit unstable; };
 
-	};
+        };
+
+        "brian@workstation" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            # Home Manager configuration
+            (./. + "/home/brian@workstation")
+
+            # Other modules
+            nixvim-hm
+          ];
+
+          extraSpecialArgs = { inherit unstable; };
+
+        };
 
       };
 
       nixosConfigurations = {
+
         "BrianTUX" = lib.nixosSystem {
-	  inherit pkgs system;
+          inherit pkgs system;
 
           modules = [
-	   # System configuration
-           ./system/BrianTUX 
+            # System configuration
+            ./system/BrianTUX
 
-           # Other modules
-	   nixvim-nixos
-	  ];
-	};
-        
-         "tuxbook" = lib.nixosSystem {
-	  inherit pkgs system;
+            # Home Manager Module
+            nixos-hm
 
-          modules = [
-	   # System configuration
-           ./system/tuxbook/configuration.nix 
+            # Other modules
+            nixvim-nixos
+          ];
+        };
 
-           # Other modules
-	   nixvim-nixos
-	  ];
-	};
-
-         "workstation" = lib.nixosSystem {
-	  inherit pkgs system;
+        "tuxbook" = lib.nixosSystem {
+          inherit pkgs system;
 
           modules = [
-	   # System configuration
-           ./system/workstation 
-	  ];
-	};
+            # System configuration
+            ./system/tuxbook/configuration.nix
+
+            # Other modules
+            nixvim-nixos
+          ];
+        };
+
+        "workstation" = lib.nixosSystem {
+          inherit pkgs system;
+
+          modules = [
+            # System configuration
+            ./system/workstation
+
+            # Home Manager Module
+            nixos-hm
+          ];
+        };
       };
     };
-    
+
 }

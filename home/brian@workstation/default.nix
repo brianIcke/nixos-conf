@@ -1,14 +1,12 @@
-{ config, pkgs, unstable,  ... }:
+{ config, pkgs, unstable, ... }:
 
 {
   imports =
-    [ 
+    [
       # Global modules
       ../global
 
       # Optional modules
-      ../optional/hypr
-      
     ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -24,7 +22,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "24.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -32,21 +30,6 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    
-    hfsprogs
-    libgpod
-    strawberry
-    calibre
-    bruno
-    blender
-    android-studio
-    arduino-ide
-    jetbrains.idea-community
-    godot_4
-    dolphin-emu
-    prismlauncher
-    lutris
-    libsForQt5.ktouch
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -94,38 +77,44 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Thunderbird
+  programs.thunderbird = {
+    enable = true;
+  };
+
+  # Thunderbird profile
+  programs.thunderbird.profiles.brian-nickel.isDefault = true;
+
   # KVM hypervisor connection
   dconf.settings = {
-  "org/virt-manager/virt-manager/connections" = {
-    autoconnect = ["qemu:///system"];
-    uris = ["qemu:///system"];
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
     };
   };
-  
-  # Alacritty
-  programs.alacritty.enable = true;
-  programs.alacritty.settings = { shell = {  program = /home/brian/.nix-profile/bin/tmux;  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
 
   # ZSH
   programs.zsh = {
     enable = true;
-    initExtra = "neofetch\neval \"$(zoxide init zsh)\"";
+    initExtra = "fastfetch";
     shellAliases = {
       cat = "bat";
       top = "htop";
-      cd = "z";
     };
 
     oh-my-zsh = {
       enable = true;
       plugins = [
         "git"
-        "fzf"
       ];
 
       theme = "bira";
 
     };
+
+    # Alacritty
+    programs.alacritty.enable = true;
+    programs.alacritty.settings = { shell = { program = /run/current-system/sw/bin/tmux; args = [ "new-session" "-A" "-D" "-s" "main" ]; }; };
 
     plugins = [
       {
@@ -137,14 +126,31 @@
           sha256 = "KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
         };
       }
-   ];
+    ];
 
   };
 
-  # Enable tmux
-  programs.tmux = {
+  # VSCodium
+  programs.vscode = {
     enable = true;
-    extraConfig = "set -g mouse";
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      ms-python.python
+      rust-lang.rust-analyzer
+      bbenoist.nix
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+      vadimcn.vscode-lldb
+      tamasfe.even-better-toml
+      serayuzgur.crates
+      redhat.vscode-yaml
+      adpyke.codesnap
+      esbenp.prettier-vscode
+      bradlc.vscode-tailwindcss
+      pkief.material-icon-theme
+      mikestead.dotenv
+    ];
   };
 
   # Neovim config
@@ -158,6 +164,7 @@
     # Plugins
     plugins.airline = {
       enable = true;
+      theme = "deus";
     };
 
     # LSP
@@ -173,8 +180,8 @@
         enable = true;
       };
     };
-    
-    opts = {
+
+    options = {
       number = true;
       relativenumber = true;
       fileencoding = "utf-8";

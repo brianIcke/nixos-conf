@@ -10,30 +10,20 @@
       # Global modules
       ../global
 
-      # Optional modules
       ./hardware-configuration.nix # Include the results of the hardware scan.
+
+      # Optional modules
+      ../optional/bluetooth
       ../optional/hyprland
       ../optional/modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
       ../optional/docker
+      ../optional/virtualization/virtualbox
+      ../optional/virtualization/virt-manager
       ../optional/android-tools
     ];
 
   # Kernel modules
   boot.initrd.kernelModules = [ "amdgpu" ];
-
-  # VirtualBox support
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "brian" ];
-
-  # VirtualBox extensions
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-
-  # Libvirtd 
-  virtualisation.libvirtd.enable = true;
-  users.extraGroups.libvirtd.members = [ "brian" ]; # Add brian to libvirtd group
-  
-  # Virt-manager
-  programs.virt-manager.enable = true;
 
   # OnlyOffice
   programs.onlyoffice.enable = true;
@@ -55,7 +45,6 @@
 
   console = {
     font = "Lat2-Terminus16";
-    #keyMap = "us";
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
@@ -110,45 +99,16 @@
   # Enable Samba support
   services.samba.enable = true;
 
-  # Autodiscovery of network printers
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
   # Flatpak support
   services.flatpak.enable = true;
 
   # Enable sound. (Pulseaudio)
   # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
 
   # Remove sound.enable or set it to false if you had it set previously, as sound.enable is only meant for ALSA-based configurations
 
-  # Pipewire support
   # rtkit is optional but recommended
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-  };
-
-  # Bluetooth codecs
-  environment.etc = {
-	"wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-		bluez_monitor.properties = {
-			["bluez5.enable-sbc-xq"] = true,
-			["bluez5.enable-msbc"] = true,
-			["bluez5.enable-hw-volume"] = true,
-			["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-		}
-	'';
-  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

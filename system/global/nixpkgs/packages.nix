@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-    environment.systemPackages =
-    
+  environment.systemPackages =
+
     let
       # Python packages
       python-packages = ps: with ps; [
@@ -14,22 +14,16 @@
     in
 
     with pkgs; [
-      vim 
-      wget
-      curl
       (python312.withPackages python-packages)
       go
       lua
       jdk17
-      nmap
-      bat
-      htop
+      nixpkgs-fmt
       nodejs_20
       xclip
       alsa-utils
       pulseaudio
       wineWowPackages.staging
       winetricks
-      usbutils
     ];
 }

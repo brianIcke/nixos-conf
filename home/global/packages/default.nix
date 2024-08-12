@@ -8,13 +8,9 @@
       unstable.vesktop
       chromium
       vlc
-      fzf
-      zoxide
       gimp
       keepassxc
-      neofetch
-      libreoffice-qt
-      gh
+      libreoffice
       hunspell
       hunspellDicts.de_DE
     ];
