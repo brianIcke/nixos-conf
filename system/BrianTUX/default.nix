@@ -15,6 +15,7 @@
       ../optional/hyprland
       ../optional/modules/onlyoffice.nix # module by emmanuelrosa as workaround for onlyoffice using system fonts
       ../optional/docker
+      ../optional/android-tools
     ];
 
   # Kernel modules
