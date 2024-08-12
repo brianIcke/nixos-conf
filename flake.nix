@@ -110,7 +110,7 @@
 
           modules = [
 	   # System configuration
-           ./system/workstation/configuration.nix 
+           ./system/workstation 
 	  ];
 	};
       };

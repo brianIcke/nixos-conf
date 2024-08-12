@@ -21,6 +21,10 @@
 
   # Libvirtd 
   virtualisation.libvirtd.enable = true;
+
+  # VirtualBox guest additions
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.draganddrop = true;
   
   # Virt-manager
   programs.virt-manager.enable = true;
