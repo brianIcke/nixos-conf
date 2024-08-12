@@ -33,6 +33,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/ZwoTerraPlatte" =
+    { device = "/dev/disk/by-uuid/5e30d291-ea52-4987-8ce3-2f2424d81d82";
+      fsType = "ext4";
+    };
+
   swapDevices = [ {
     device = "/var/lib/swapfile";
     size = 32 * 1024;
