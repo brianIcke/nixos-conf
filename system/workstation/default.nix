@@ -43,23 +43,11 @@
 
   console = {
     font = "Lat2-Terminus16";
-    #keyMap = "de";
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # XDG desktop integration
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-       xdg-desktop-portal-wlr
-       xdg-desktop-portal-gtk
-     ];
-    };
-  };
 
   # Bluetooth support
   #hardware.bluetooth.enable = true;
@@ -85,7 +73,7 @@
 
   # Enable sound.
   # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
 
   # Remove sound.enable or set it to false if you had it set previously, as sound.enable is only meant for ALSA-based configurations
 
