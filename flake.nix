@@ -142,7 +142,7 @@
             }
 
             # Other modules
-            nixvim-hm
+            nixvim-nixos
           ];
         };
       };
