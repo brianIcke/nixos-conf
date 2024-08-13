@@ -14,7 +14,7 @@
       ../global
 
       # Individual options
-      ../optional/virtualization/guest.nix
+      ../optional/virtualization/virtualbox/guest.nix
     ];
 
   # Enable plymouth
