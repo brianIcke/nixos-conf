@@ -115,7 +115,7 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.brian = import (./. + "/home/brian@workstation");
-          home-manager.extraSpecialArgs = { inherit nixvim-hm; };
+          home-manager.extraSpecialArgs = { inherit nixvim-hm unstable; };
         }
 
       ];
