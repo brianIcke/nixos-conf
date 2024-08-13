@@ -1,4 +1,4 @@
-{ config, pkgs, unstable,  ... }:
+{ config, pkgs, unstable, nixvim-hm,  ... }:
 
 {
   imports =
@@ -7,6 +7,7 @@
       ../global
 
       # Optional modules
+      nixvim-hm
       ../optional/hypr
       
     ];
@@ -104,7 +105,7 @@
   
   # Alacritty
   programs.alacritty.enable = true;
-  programs.alacritty.settings = { shell = {  program = /home/brian/.nix-profile/bin/tmux;  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
+  programs.alacritty.settings = { shell = {  program = "${pkgs.tmux}/bin/tmux";  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
 
   # ZSH
   programs.zsh = {

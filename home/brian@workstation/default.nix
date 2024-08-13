@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, unstable, nixvim-hm, ... }:
 
 {
   imports =
@@ -7,6 +7,7 @@
       ../global
 
       # Optional modules
+      nixvim-hm
     ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
