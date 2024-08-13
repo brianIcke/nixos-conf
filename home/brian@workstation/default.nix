@@ -94,6 +94,10 @@
     };
   };
 
+  # Alacritty
+  programs.alacritty.enable = true;
+  programs.alacritty.settings = { shell = { program = "${pkgs.tmux}/bin/tmux"; args = [ "new-session" "-A" "-D" "-s" "main" ]; }; };
+
   # ZSH
   programs.zsh = {
     enable = true;
@@ -112,10 +116,6 @@
       theme = "bira";
 
     };
-
-    # Alacritty
-    programs.alacritty.enable = true;
-    programs.alacritty.settings = { shell = { program = /run/current-system/sw/bin/tmux; args = [ "new-session" "-A" "-D" "-s" "main" ]; }; };
 
     plugins = [
       {
