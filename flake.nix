@@ -134,6 +134,12 @@
 
             # Home Manager Module
             nixos-hm
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.users.brian = import (./. + "/home/brian@workstation");
+            }
           ];
         };
       };
