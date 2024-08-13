@@ -140,6 +140,9 @@
 
               home-manager.users.brian = import (./. + "/home/brian@workstation");
             }
+
+            # Other modules
+            nixvim-hm
           ];
         };
       };
