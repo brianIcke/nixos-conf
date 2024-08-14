@@ -134,7 +134,6 @@
     # Plugins
     plugins.airline = {
       enable = true;
-      theme = "deus";
     };
 
     # LSP
@@ -150,8 +149,8 @@
         enable = true;
       };
     };
-
-    options = {
+    
+    opts = {
       number = true;
       relativenumber = true;
       fileencoding = "utf-8";
