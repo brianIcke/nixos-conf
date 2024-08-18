@@ -5,4 +5,7 @@
   # Virt-manager
   programs.virt-manager.enable = true;
   users.extraGroups.libvirtd.members = [ "brian" ]; # Add brian to libvirtd group
+
+  # Spice USB Redirect
+  virtualisation.spiceUSBRedirection.enable = true;
 }
