@@ -1,11 +1,8 @@
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, ... }:
 
 {
     home.packages = with pkgs; [
-
-      unstable.AusweisApp2
       filezilla
-      unstable.vesktop
       chromium
       vlc
       gimp

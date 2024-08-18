@@ -1,15 +1,15 @@
-{ config, pkgs, unstable, nixvim-hm,  ... }:
+{ config, pkgs, unstable, nixvim-hm, ... }:
 
 {
   imports =
-    [ 
+    [
       # Global modules
       ../global
 
       # Optional modules
       nixvim-hm
       ../optional/hypr
-      
+
     ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -33,8 +33,10 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    
+
     hfsprogs
+    unstable.vesktop
+    unstable.AusweisApp2
     libgpod
     strawberry
     calibre
@@ -97,15 +99,15 @@
 
   # KVM hypervisor connection
   dconf.settings = {
-  "org/virt-manager/virt-manager/connections" = {
-    autoconnect = ["qemu:///system"];
-    uris = ["qemu:///system"];
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
     };
   };
-  
+
   # Alacritty
   programs.alacritty.enable = true;
-  programs.alacritty.settings = { shell = {  program = "${pkgs.tmux}/bin/tmux";  args = [  "new-session"  "-A"  "-D"  "-s"  "main"  ];  };};
+  programs.alacritty.settings = { shell = { program = "${pkgs.tmux}/bin/tmux"; args = [ "new-session" "-A" "-D" "-s" "main" ]; }; };
 
   # ZSH
   programs.zsh = {
@@ -138,7 +140,7 @@
           sha256 = "KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
         };
       }
-   ];
+    ];
 
   };
 
@@ -174,7 +176,7 @@
         enable = true;
       };
     };
-    
+
     opts = {
       number = true;
       relativenumber = true;

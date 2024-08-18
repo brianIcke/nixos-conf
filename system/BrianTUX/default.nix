@@ -6,7 +6,7 @@
 
 {
   imports =
-    [ 
+    [
       # Global modules
       ../global
 
@@ -31,7 +31,7 @@
   networking.hostName = "BrianTUX"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ 8080 1883 ];
@@ -146,19 +146,21 @@
 
   environment.systemPackages =
 
-  let
-    #Wallpaper Engine Plugin
-   # wallpaper-engine-plasma = pkgs.plasma5Packages.callPackage ./pkgs/wallpaper-engine-plasma-plugin.nix {
-   #   inherit (pkgs.gst_all_1) gst-libav;
-   #   inherit (pkgs.python311Packages) websockets;
+    let
+      #Wallpaper Engine Plugin
+      # wallpaper-engine-plasma = pkgs.plasma5Packages.callPackage ./pkgs/wallpaper-engine-plasma-plugin.nix {
+      #   inherit (pkgs.gst_all_1) gst-libav;
+      #   inherit (pkgs.python311Packages) websockets;
       #inherit (pkgs.libsForQt5.qt5.qtwebsockets) qtwebsockets;
-   # };
-  in
+      # };
+    in
 
-  with pkgs; [
-    #libsForQt5.qt5.qtwebsockets
-    #wallpaper-engine-plasma
-  ];
+    with pkgs; [
+
+
+      #libsForQt5.qt5.qtwebsockets
+      #wallpaper-engine-plasma
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
