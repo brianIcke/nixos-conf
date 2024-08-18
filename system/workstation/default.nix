@@ -10,11 +10,12 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
-      # Global options
+      # Global modules
       ../global
 
-      # Individual options
+      # Optional modules
       ../optional/virtualization/virtualbox/guest.nix
+      ../optional/virtualization/virt-manager
     ];
 
   # Enable plymouth
@@ -22,6 +23,13 @@
 
   # LUKS
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/461fd470-fd27-4c31-9dd9-a94b6f89922b";
+
+  # Yubikey U2F PAM
+  security.pam.u2f = {
+    enable = true;
+    control = "required";
+    cue = true;
+  };
 
   networking.hostName = "workstation"; # Define your hostname.
   # Pick only one of the below networking options.
