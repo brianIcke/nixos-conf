@@ -17,7 +17,6 @@
       (python312.withPackages python-packages)
       go
       lua
-      jdk17
       nixpkgs-fmt
       nodejs_20
       xclip
