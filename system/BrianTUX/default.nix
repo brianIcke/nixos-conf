@@ -32,6 +32,7 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  users.extraGroups.networkmanager.members = [ "brian" ];
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ 8080 1883 ];
