@@ -145,6 +145,7 @@
       "$mod, C, killactive,"
       "$mod, M, exit,"
       "$mod, E, exec, $fileManager"
+      "$mod, N, exec, codium $HOME/.nix-conf"
       "$mod, V, togglefloating,"
       "$mod, return, fullscreen"
       "$mod, R, exec, $menu"
