@@ -171,7 +171,7 @@
   programs.git = {
     enable = true;
     userName = "Brian Nickel";
-    userEmail = "mail@brian-nickel.de";
+    userEmail = "brian.nickel@uni-muenster.de";
   };
 
 }

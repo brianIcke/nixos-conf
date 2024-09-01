@@ -14,7 +14,6 @@
       ../global
 
       # Optional modules
-      ../optional/virtualization/virtualbox/guest.nix
       ../optional/virtualization/virt-manager
     ];
 
@@ -24,14 +23,14 @@
   # LUKS
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/461fd470-fd27-4c31-9dd9-a94b6f89922b";
 
-  # Yubikey U2F PAM
-  security.pam.u2f = {
-    enable = true;
-    control = "required";
-    cue = true;
-  };
+  ## Yubikey U2F PAM
+  #security.pam.u2f = {
+  #  enable = true;
+  #  control = "required";
+  #  cue = true;
+  #};
 
-  networking.hostName = "workstation"; # Define your hostname.
+  networking.hostName = "IVV7BRIAN"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -63,7 +62,7 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "de";
+    layout = "de,us";
     options = "eurosign:e,caps:escape";
   };
 
