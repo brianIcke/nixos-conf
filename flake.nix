@@ -11,6 +11,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Lanzaboote
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Nixvim for configure Neovim
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.05";
@@ -20,7 +26,7 @@
   };
 
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixvim, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixvim, lanzaboote, ... }:
     let
       system = "x86_64-linux";
 
@@ -66,61 +72,83 @@
 
       };
 
-  nixosConfigurations = {
+      nixosConfigurations = {
 
-    "BrianTUX" = lib.nixosSystem {
-      inherit pkgs system;
+        "BrianTUX" = lib.nixosSystem {
+          inherit pkgs system;
 
-      modules = [
-        # System configuration
-        ./system/BrianTUX
+          modules = [
+            # System configuration
+            ./system/BrianTUX
 
-        # Home Manager Module
-        nixos-hm
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+            # Home Manager Module
+            nixos-hm
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
 
-          home-manager.users.brian = import (./. + "/home/brian@BrianTUX");
-          home-manager.extraSpecialArgs = { inherit nixvim-hm unstable; };
-        }
+              home-manager.users.brian = import (./. + "/home/brian@BrianTUX");
+              home-manager.extraSpecialArgs = { inherit nixvim-hm unstable; };
+            }
 
-        # Other modules
-      ];
+            # Other modules
+          ];
+        };
+
+        "tuxbook" = lib.nixosSystem {
+          inherit pkgs system;
+
+          modules = [
+            # System configuration
+            ./system/tuxbook/configuration.nix
+
+            # Other modules
+            nixvim-nixos
+          ];
+        };
+
+        "workstation" = lib.nixosSystem {
+          inherit pkgs system;
+
+          modules = [
+            # System configuration
+            ./system/workstation
+
+            # Home Manager Module
+            nixos-hm
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.users.brian = import (./. + "/home/brian@workstation");
+              home-manager.extraSpecialArgs = { inherit nixvim-hm unstable; };
+            }
+
+
+            lanzaboote.nixosModules.lanzaboote
+
+            ({ pkgs, lib, ... }: {
+
+              environment.systemPackages = [
+                # For debugging and troubleshooting Secure Boot.
+                pkgs.sbctl
+              ];
+
+              # Lanzaboote currently replaces the systemd-boot module.
+              # This setting is usually set to true in configuration.nix
+              # generated at installation time. So we force it to false
+              # for now.
+              boot.loader.systemd-boot.enable = lib.mkForce false;
+
+              boot.lanzaboote = {
+                enable = true;
+                pkiBundle = "/etc/secureboot";
+              };
+            })
+
+          ];
+        };
+      };
     };
-
-    "tuxbook" = lib.nixosSystem {
-      inherit pkgs system;
-
-      modules = [
-        # System configuration
-        ./system/tuxbook/configuration.nix
-
-        # Other modules
-        nixvim-nixos
-      ];
-    };
-
-    "workstation" = lib.nixosSystem {
-      inherit pkgs system;
-
-      modules = [
-        # System configuration
-        ./system/workstation
-
-        # Home Manager Module
-        nixos-hm
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.users.brian = import (./. + "/home/brian@workstation");
-          home-manager.extraSpecialArgs = { inherit nixvim-hm unstable; };
-        }
-
-      ];
-    };
-  };
-};
 
 }
