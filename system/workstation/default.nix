@@ -20,6 +20,12 @@
   # Enable plymouth
   boot.plymouth.enable = true;
 
+  # Enable bootspec
+  boot.bootspec.enable = true;
+
+  # Enable systemd-boot initrd
+  boot.initrd.systemd.enable = true;
+
   # LUKS
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/13cae5b6-3e28-44bd-ac14-35693fc1fed3";
 
@@ -101,7 +107,16 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  environment.systemPackages = with pkgs; [ mattermost-desktop ];
+  environment.systemPackages = with pkgs;
+  [
+     mattermost-desktop 
+     jetbrains.idea-community-bin
+     virt-viewer
+     freerdp3
+     remmina
+     gnomeExtensions.remmina-search-provider
+     gnome.gnome-tweaks
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
