@@ -18,6 +18,7 @@
       go
       lua
       nixpkgs-fmt
+      unzip
       nodejs_20
       xclip
       alsa-utils
