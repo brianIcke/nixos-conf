@@ -97,6 +97,7 @@
     shellAliases = {
       cat = "bat";
       top = "htop";
+      avm = "python $HOME/workspace/python/pve_connect/connect_vm.py -vm IVV7BRIANWS -admin&";
     };
 
     oh-my-zsh = {
