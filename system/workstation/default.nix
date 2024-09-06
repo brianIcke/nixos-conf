@@ -14,6 +14,7 @@
       ../global
 
       # Optional modules
+      ../optional/docker
       ../optional/virtualization/virt-manager
     ];
 
@@ -26,10 +27,23 @@
   # Enable systemd-boot initrd
   boot.initrd.systemd.enable = true;
 
+  # Enable DavMail Gateway
+  services.davmail = {
+    enable = true;
+    url = "https://owa.wwu.de";
+    config = {
+      "davmail.allowRemote" = true;
+      "davmail.mode" = "EWS";
+      "davmail.imapPort" = 1143;
+      "davmail.ldapPort" = 1389;
+      "davmail.popPort" = 1110;
+      "davmail.smtpPort" = 1025;
+    };
+  };
   # LUKS
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/13cae5b6-3e28-44bd-ac14-35693fc1fed3";
 
-  ## Yubikey U2F PAM
+  # Yubikey U2F PAM
   #security.pam.u2f = {
   #  enable = true;
   #  control = "required";
@@ -55,6 +69,13 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+
+  # Enable pcscd daemon (smartcard support)
+  #security.pam.p11.enable = true;
+  #services.pcscd.enable = true;
+  #environment.etc."pkcs11/modules/opensc-pkcs11".text = ''
+  #  module: ${pkgs.opensc}/lib/opensc-pkcs11.so
+  #'';
 
   # Enable SDDM display manager
   #services.displayManager.sddm.enable = true;
@@ -108,15 +129,16 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs;
-  [
-     mattermost-desktop 
-     jetbrains.idea-community-bin
-     virt-viewer
-     freerdp3
-     remmina
-     gnomeExtensions.remmina-search-provider
-     gnome.gnome-tweaks
-  ];
+    [
+      mattermost-desktop
+      jetbrains.idea-community-bin
+      virt-viewer
+      freerdp3
+      remmina
+      gnomeExtensions.remmina-search-provider
+      gnome.gnome-tweaks
+      opensc
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
