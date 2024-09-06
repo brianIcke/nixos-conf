@@ -9,4 +9,10 @@
       enable = true;
       setSocketVariable = true;
     };
+
+    # Install docker-compose
+    environment.systemPackages = with pkgs;
+    [
+      docker-compose
+    ];
 }
