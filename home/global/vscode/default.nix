@@ -33,6 +33,7 @@
         bradlc.vscode-tailwindcss
         pkief.material-icon-theme
         mikestead.dotenv
+        seatonjiang.gitmoji-vscode
       ];
     };
 }
