@@ -11,6 +11,9 @@
         "platformio-ide.useBuiltinPIOCore" = "false";
         "workbench.colorTheme" = "Dracula Soft";
         "workbench.iconTheme" = "material-icon-theme";
+        "[typescriptreact]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
       };
 
       extensions = with pkgs.vscode-extensions; [
