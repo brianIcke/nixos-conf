@@ -4,6 +4,9 @@
   # Enable Hyprland
   programs.hyprland.enable = true;
 
+  # Enable waybar
+  programs.waybar.enable = true;
+
   # Enable SDDM display manager
   services.displayManager.sddm.enable = true;
 
@@ -18,13 +21,9 @@
 
   # Essential packages
   environment.systemPackages = with pkgs; [
-    udiskie
-    dunst
     networkmanagerapplet
-    hyprpaper
     wofi
     wofi-emoji
-    waybar
     copyq
   ]; 
 }
