@@ -69,12 +69,17 @@
   # plain files is through 'home.file'.
   home.file = {
     "${config.home.homeDirectory}/.config/waybar" = {
-      source = .config/waybar;
+      source = ../optional/waybar/configs/catppuccin;
       recursive = true;
     };
 
     "${config.home.homeDirectory}/.config/hypr" = {
-      source = .config/hypr;
+      source = ../optional/hypr/configs/catppuccin;
+      recursive = true;
+    };
+
+    "${config.home.homeDirectory}/.wallpapers" = {
+      source = ../optional/wallpapers;
       recursive = true;
     };
   };

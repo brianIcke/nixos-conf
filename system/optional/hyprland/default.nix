@@ -8,7 +8,11 @@
   programs.waybar.enable = true;
 
   # Enable SDDM display manager
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
+  };
 
   # Enable Udisk2 service
   services.udisks2.enable = true;
@@ -21,9 +25,18 @@
 
   # Essential packages
   environment.systemPackages = with pkgs; [
+    (catppuccin-sddm.override
+      {
+        flavor = "mocha";
+        font = "Noto Sans";
+        fontSize = "9";
+        background = "${config.users.users.brian.home}/.wallpapers/cat-wallpaper.png";
+        loginBackground = true;
+      })
+
     networkmanagerapplet
     wofi
     wofi-emoji
     copyq
-  ]; 
+  ];
 }

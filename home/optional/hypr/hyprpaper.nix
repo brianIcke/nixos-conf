@@ -9,11 +9,11 @@
     splash_offset = 2.0;
 
     preload =
-      [ "~/Bilder/arch-linux-chan-wallpaper.jpg" ];
+      [ "~/.wallpapers/arch-linux-chan-wallpaper.jpg" ];
 
     wallpaper = [
-      "DP-2,~/Bilder/arch-linux-chan-wallpaper.jpg"
-      "DP-3,~/Bilder/arch-linux-chan-wallpaper.jpg"
+      "DP-2,~/.wallpapers/arch-linux-chan-wallpaper.jpg"
+      "DP-3,~/.wallpapers/arch-linux-chan-wallpaper.jpg"
     ];
   };
 }
