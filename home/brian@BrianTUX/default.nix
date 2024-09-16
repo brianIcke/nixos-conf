@@ -8,7 +8,7 @@
 
       # Optional modules
       nixvim-hm
-      ../optional/hypr
+      ../optional/hypr/configs/gaming
 
     ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -35,7 +35,7 @@
     # pkgs.hello
 
     hfsprogs
-    unstable.vesktop
+    vesktop
     unstable.AusweisApp2
     libgpod
     strawberry
@@ -69,12 +69,12 @@
   # plain files is through 'home.file'.
   home.file = {
     "${config.home.homeDirectory}/.config/waybar" = {
-      source = ../optional/waybar/configs/catppuccin;
+      source = ../optional/waybar/configs/dotfiles/catppuccin;
       recursive = true;
     };
 
     "${config.home.homeDirectory}/.config/hypr" = {
-      source = ../optional/hypr/configs/catppuccin;
+      source = ../optional/hypr/configs/dotfiles/catppuccin;
       recursive = true;
     };
 

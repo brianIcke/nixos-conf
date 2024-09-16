@@ -4,7 +4,7 @@
     imports =
     [
         ./hyprland.nix
-        ./hypridle.nix
         ./hyprpaper.nix
+        ../hypridle.nix
     ];
 }

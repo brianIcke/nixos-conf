@@ -110,15 +110,15 @@
 
     # https://wiki.hyprland.org/Configuring/Variables/#input
     input = {
-      kb_layout = "us,de";
-      kb_variant = ",qwerty";
+      kb_layout = "de,us";
+      kb_variant = ",qwertz";
 
       follow_mouse = 1;
 
       sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
       touchpad = {
-        natural_scroll = false;
+        natural_scroll = true;
       };
     };
 
@@ -167,8 +167,8 @@
 
       # Media keys
       ",XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
-      ",XF86AudioLowerVolume, exec, pactl set-sink-volume 0 -1%"
-      ",XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +1%"
+      ",XF86AudioLowerVolume, exec, pactl set-sink-volume 0 -2%"
+      ",XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +2%"
 
       # Move focus with mod + arrow keys
       "$mod, left, movefocus, l"
@@ -179,17 +179,14 @@
       # Workspaces
       "$subMod, T, workspace, name:thunderbird"
       "$subMod, D, workspace, name:discord"
-      "$subMod, S, workspace, name:steam"
-      "$subMod, G, workspace, name:game"
       "$subMod, Q, workspace, name:terminal"
 
       # Special workspaces
-      "$mod, H, togglespecialworkspace, magic"
+      "$subMod, H, togglespecialworkspace, magic"
 
       # Applications
       "$subMod, F, exec, firefox"
       "$subMod, D, exec, pgrep vesktop || vesktop"
-      "$subMod, S, exec, pgrep steam || steam"
 
       # Scroll through existing workspaces with mod + scroll
       "$mod, mouse_down, workspace, e+1"
@@ -246,9 +243,6 @@
     windowrulev2 = [
       "workspace name:thunderbird, class:thunderbird"
       "workspace name:discord, class:vesktop"
-      "workspace name:steam silent, class:steam"
-      "workspace name:game, class:^steam_app_\\\d+$"
-      "fullscreen, class:^steam_app_\\\d+$"
       "workspace name:terminal, class:Alacritty"
       "suppressevent maximize, class:.*"
     ];
