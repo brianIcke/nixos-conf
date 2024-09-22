@@ -35,6 +35,7 @@
     # pkgs.hello
 
     hfsprogs
+    unstable.gns3-gui
     vesktop
     unstable.AusweisApp2
     libgpod
