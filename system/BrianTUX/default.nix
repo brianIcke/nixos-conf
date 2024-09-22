@@ -158,7 +158,11 @@
 
     with pkgs; [
 
-
+      ciscoPacketTracer8
+      gns3-server
+      anki-bin
+      mpv
+      inetutils
       #libsForQt5.qt5.qtwebsockets
       #wallpaper-engine-plasma
     ];
