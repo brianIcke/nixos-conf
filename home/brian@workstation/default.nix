@@ -8,6 +8,7 @@
 
       # Optional modules
       nixvim-hm
+      ../optional/hypr/configs/workstation
     ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -49,16 +50,20 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    "${config.home.homeDirectory}/.config/waybar" = {
+      source = ../optional/waybar/configs/dotfiles/catppuccin;
+      recursive = true;
+    };
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    "${config.home.homeDirectory}/.config/hypr" = {
+      source = ../optional/hypr/configs/workstation/dotfiles/catppuccin;
+      recursive = true;
+    };
+
+    "${config.home.homeDirectory}/.wallpapers" = {
+      source = ../optional/wallpapers;
+      recursive = true;
+    };
   };
 
   # You can also manage environment variables but you will have to manually

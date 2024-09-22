@@ -110,8 +110,8 @@
 
     # https://wiki.hyprland.org/Configuring/Variables/#input
     input = {
-      kb_layout = "de,us";
-      kb_variant = ",qwertz";
+      kb_layout = "us,de";
+      kb_variant = ",qwerty";
 
       follow_mouse = 1;
 
@@ -130,7 +130,7 @@
     # Example per-device config
     # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
     device = {
-      name = "logitech-advanced-corded-mouse-m500s";
+      name = "pixart-dell-ms116-usb-optical-mouse";
       sensitivity = -0.5;
     };
 
@@ -156,14 +156,14 @@
       "$mod, M, exit,"
       "$mod, L, exec, hyprlock"
       "$mod, F, exec, $fileManager"
-      "$mod, N, exec, codium $HOME/.nix-conf"
+      "$mod, N, exec, codium $HOME/nixos-conf"
       "$mod, V, togglefloating,"
       "$mod, return, fullscreen"
       "$mod, R, exec, $menu"
       "$mod, E, exec, wofi-emoji"
       "$mod, P, pseudo,"
       "$mod, J, togglesplit,"
-      "$mod, space, exec, hyprctl switchxkblayout keychron-q2 next"
+      "$mod, space, exec, hyprctl switchxkblayout microsoft-natural®-ergonomic-keyboard-4000 next"
 
       # Media keys
       ",XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
@@ -233,11 +233,9 @@
     # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
     workspace = [
-      "name:thunderbird,monitor:DP-3"
-      "name:discord,monitor:DP-3"
-      "name:steam,monitor:DP-3"
-      "name:game,monitor:DP-2, border:false, rounding:false"
-      "name:terminal,monitor:DP-3"
+      "name:thunderbird,monitor:DP-4"
+      "name:discord,monitor:DP-4"
+      "name:terminal,monitor:DP-4"
     ];
 
     windowrulev2 = [

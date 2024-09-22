@@ -15,6 +15,7 @@
 
       # Optional modules
       ../optional/docker
+      ../optional/hyprland
       ../optional/virtualization/virt-manager
     ];
 
@@ -84,11 +85,11 @@
   #services.displayManager.sddm.enable = true;
 
   # Enable GDM display manager
-  services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.displayManager.gdm.debug = true;
 
   # Enable GNOME Desktop
-  services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

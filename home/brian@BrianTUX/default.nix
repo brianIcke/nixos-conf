@@ -74,7 +74,7 @@
     };
 
     "${config.home.homeDirectory}/.config/hypr" = {
-      source = ../optional/hypr/configs/dotfiles/catppuccin;
+      source = ../optional/hypr/configs/gaming/dotfiles/catppuccin;
       recursive = true;
     };
 
