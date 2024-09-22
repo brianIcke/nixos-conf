@@ -135,6 +135,8 @@
   environment.systemPackages = with pkgs;
     [
       mattermost-desktop
+      ciscoPacketTracer8
+      cifs-utils
       jetbrains.idea-community-bin
       virt-viewer
       freerdp3
