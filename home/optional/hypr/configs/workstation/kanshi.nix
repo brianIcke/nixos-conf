@@ -10,7 +10,7 @@
         outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.1;
+            scale = 1.0;
             status = "enable";
           }
         ];
@@ -25,7 +25,7 @@
           }
           {
             criteria = "Dell Inc. DELL P2419H 237Y6X2";
-            position = "3200,0";
+            position = "1920,0";
             mode = "1920x1080@60Hz";
           }
           {
