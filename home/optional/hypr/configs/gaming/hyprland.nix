@@ -21,7 +21,7 @@
 
     # Autostart
     "exec-once" = [
-      "$terminal"
+      "[workspace name:terminal] $terminal"
       "nm-applet &"
       "copyq --start-server &"
       "[workspace 1] firefox &"
@@ -151,7 +151,7 @@
 
     bind = [
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-      "$mod, Q, exec, pgrep $terminal || $terminal"
+      "$mod, Q, exec, $terminal"
       "$mod, C, killactive,"
       "$mod, M, exit,"
       "$mod, L, exec, hyprlock"
@@ -250,7 +250,6 @@
       "workspace name:steam silent, class:steam"
       "workspace name:game, class:^steam_app_\\\d+$"
       "fullscreen, class:^steam_app_\\\d+$"
-      "workspace name:terminal, class:Alacritty"
       "suppressevent maximize, class:.*"
     ];
 
