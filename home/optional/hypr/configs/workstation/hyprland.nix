@@ -25,6 +25,7 @@
       "nm-applet &"
       "copyq --start-server &"
       "[workspace 1] firefox &"
+      "python $HOME/workspace/python/pve_connect/connect_vm.py -vm IVV7BRIANWS -admin"
       "thunderbird &"
     ];
 
@@ -37,7 +38,7 @@
     # Look and feel
     general = {
       gaps_in = 5;
-      gaps_out = 20;
+      gaps_out = 5;
       border_size = 2;
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
@@ -129,10 +130,17 @@
 
     # Example per-device config
     # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
-    device = {
-      name = "pixart-dell-ms116-usb-optical-mouse";
-      sensitivity = -0.5;
-    };
+    device = [
+      {
+        name = "pixart-dell-ms116-usb-optical-mouse";
+        sensitivity = -0.5;
+      }
+
+      {
+        name = "at-translated-set-2-keyboard";
+        kb_layout = "us,de";
+      }
+    ];
 
     #################
     ###KEYBINDINGS###
@@ -158,12 +166,13 @@
       "$mod, F, exec, $fileManager"
       "$mod, N, exec, codium $HOME/nixos-conf"
       "$mod, V, togglefloating,"
+      "$mod, A, exec, pgrep remote-viewer || python $HOME/workspace/python/pve_connect/connect_vm.py -vm IVV7BRIANWS -admin"
       "$mod, return, fullscreen"
       "$mod, R, exec, $menu"
       "$mod, E, exec, wofi-emoji"
       "$mod, P, pseudo,"
       "$mod, J, togglesplit,"
-      "$mod, space, exec, hyprctl switchxkblayout microsoft-natural®-ergonomic-keyboard-4000 next"
+      "$mod, space, exec, hyprctl switchxkblayout sonix-ak820-keyboard next"
 
       # Media keys
       ",XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
@@ -178,8 +187,9 @@
 
       # Workspaces
       "$subMod, T, workspace, name:thunderbird"
+      "$mod, A, workspace, name:winadmvm"
       "$subMod, D, workspace, name:discord"
-      "$subMod, Q, workspace, name:terminal"
+      "$mod, Q, workspace, name:terminal"
 
       # Special workspaces
       "$subMod, H, togglespecialworkspace, magic"
@@ -236,12 +246,14 @@
       "name:thunderbird,monitor:DP-4"
       "name:discord,monitor:DP-4"
       "name:terminal,monitor:DP-4"
+      "name:winadmvm,monitor:DP-4"
     ];
 
     windowrulev2 = [
       "workspace name:thunderbird, class:thunderbird"
       "workspace name:discord, class:vesktop"
       "workspace name:terminal, class:Alacritty"
+      "workspace name:winadmvm, class:remote-viewer"
       "suppressevent maximize, class:.*"
     ];
 
