@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "rtsx_pci_sdmmc" ];
@@ -14,24 +15,50 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a57fc196-a101-44f8-956b-ec60c583a0cd";
+    {
+      device = "/dev/disk/by-uuid/a57fc196-a101-44f8-956b-ec60c583a0cd";
       fsType = "ext4";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/42120398-7c0d-4cfe-9707-7f34be01cd89";
+    {
+      device = "/dev/disk/by-uuid/42120398-7c0d-4cfe-9707-7f34be01cd89";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4C6C-CF93";
+    {
+      device = "/dev/disk/by-uuid/4C6C-CF93";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/mnt/share/ivv7bnickel" = {
+    device = "//ivv7storage/bnickel";
+    fsType = "cifs";
+    options =
+      let
+        # this line prevents hanging on network split
+        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+      in
+      [ "${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100" ];
+  };
+
+    fileSystems."/mnt/share/ivv7sccmcontent" = {
+    device = "//ivv7storage/sccmcontent";
+    fsType = "cifs";
+    options =
+      let
+        # this line prevents hanging on network split
+        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+      in
+      [ "${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100" ];
+  };
+
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a42a9f77-7704-4723-b6e7-5f7c16bd104c"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/a42a9f77-7704-4723-b6e7-5f7c16bd104c"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
