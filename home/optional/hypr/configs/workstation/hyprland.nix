@@ -155,7 +155,7 @@
     "$subMod" = "$mod+SHIFT";
 
     # Set modifier key (power)
-    "$powerMod" = "$mod+Alt_L";
+    "$powerMod" = "Control_L&Alt_L";
 
     bind = [
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
@@ -233,6 +233,11 @@
       # Power options
       "$powerMod, P, exec, systemctl poweroff"
       "$powerMod, R, exec, systemctl reboot"
+    ];
+
+    bindl = [
+      # Suspend when lid is closed
+      ",switch:Lid Switch, exec, systemctl suspend"
     ];
 
     ##############################
