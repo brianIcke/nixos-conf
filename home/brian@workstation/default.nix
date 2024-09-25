@@ -1,4 +1,4 @@
-{ config, pkgs, nixvim-hm, ... }:
+{ config, pkgs, nixvim-hm, unstable, ... }:
 
 {
   imports =
@@ -29,6 +29,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    unstable.gns3-gui
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
