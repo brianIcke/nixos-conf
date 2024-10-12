@@ -11,6 +11,11 @@
         "platformio-ide.useBuiltinPIOCore" = "false";
         "workbench.colorTheme" = "Dracula Soft";
         "workbench.iconTheme" = "material-icon-theme";
+        "files.autoSave" = "on";
+
+        "[typescript]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
         "[typescriptreact]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
