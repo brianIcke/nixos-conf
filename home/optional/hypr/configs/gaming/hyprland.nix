@@ -147,7 +147,7 @@
     "$subMod" = "$mod+SHIFT";
 
     # Set modifier key (power)
-    "$powerMod" = "$mod+Tab";
+    "$powerMod" = "Control_L&Alt_L";
 
     bind = [
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
