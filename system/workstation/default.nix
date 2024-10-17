@@ -20,13 +20,13 @@
     ];
 
   # Enable plymouth
-  boot.plymouth.enable = true;
+  #boot.plymouth.enable = true;
 
   # Enable bootspec
-  boot.bootspec.enable = true;
+  #boot.bootspec.enable = true;
 
   # Enable systemd-boot initrd
-  boot.initrd.systemd.enable = true;
+  #boot.initrd.systemd.enable = true;
 
   # Enable DavMail Gateway
   services.davmail = {
@@ -42,7 +42,10 @@
     };
   };
   # LUKS
-  boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/13cae5b6-3e28-44bd-ac14-35693fc1fed3";
+  boot.initrd.luks.devices = {
+    cryptroot.device = "/dev/disk/by-uuid/74a2f5f2-972f-453a-9d53-1e3233b5c361";
+    cryptdata.device = "/dev/disk/by-uuid/d8a5e6ee-9360-4cc4-a7a1-8d48e32690df";
+  };
 
   # Yubikey U2F PAM
   #security.pam.u2f = {
@@ -93,12 +96,12 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "de,us";
+    layout = "us,de";
     options = "eurosign:e,caps:escape";
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound.
   # sound.enable = true;
@@ -115,7 +118,7 @@
     isNormalUser = true;
     initialPassword = "p@ssw0rd";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox-wayland
       git
@@ -135,14 +138,11 @@
   environment.systemPackages = with pkgs;
     [
       mattermost-desktop
-      ciscoPacketTracer8
       cifs-utils
-      jetbrains.idea-community-bin
+      #jetbrains.idea-community-bin
       virt-viewer
       freerdp3
       remmina
-      gnomeExtensions.remmina-search-provider
-      gnome.gnome-tweaks
       opensc
     ];
 
