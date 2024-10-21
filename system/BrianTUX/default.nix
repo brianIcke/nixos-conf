@@ -28,6 +28,9 @@
   # OnlyOffice
   programs.onlyoffice.enable = true;
 
+  # Podman container engine
+  virtualisation.podman.enable = true;
+
   networking.hostName = "BrianTUX"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

@@ -24,6 +24,7 @@
       alsa-utils
       pulseaudio
       wineWowPackages.staging
+      mono
       winetricks
     ];
 }

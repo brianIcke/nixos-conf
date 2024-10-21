@@ -37,7 +37,7 @@
     # Look and feel
     general = {
       gaps_in = 5;
-      gaps_out = 20;
+      gaps_out = 10;
       border_size = 2;
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
@@ -147,7 +147,7 @@
     "$subMod" = "$mod+SHIFT";
 
     # Set modifier key (power)
-    "$powerMod" = "$mod+Tab";
+    "$powerMod" = "Control_L&Alt_L";
 
     bind = [
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
