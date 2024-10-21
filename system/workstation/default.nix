@@ -98,7 +98,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound.
   # sound.enable = true;
@@ -117,7 +117,6 @@
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox-wayland
       git
       tree
     ];
