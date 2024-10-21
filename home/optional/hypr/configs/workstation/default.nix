@@ -5,7 +5,6 @@
     [
         ./hyprland.nix
         ./hyprpaper.nix
-        ./kanshi.nix
         ../hypridle.nix
     ];
 }
