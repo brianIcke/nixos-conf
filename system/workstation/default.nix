@@ -28,6 +28,10 @@
   # Enable systemd-boot initrd
   #boot.initrd.systemd.enable = true;
 
+  # Set default system-wide locale
+  i18n.defaultLocale = "de_DE.UTF-8";
+
+
   # Enable DavMail Gateway
   services.davmail = {
     enable = true;
@@ -100,6 +104,33 @@
     options = "eurosign:e,caps:escape";
   };
 
+  # Firefox
+  programs.firefox = {
+    enable = true;
+    languagePacks = [ "de" ];
+    policies = {
+      RequestedLocales = [ "de" "en_US" ];
+      ExtensionSettings = {
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+          "installation_mode" = "normal_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+        };
+        "uBlock0@raymondhill.net" = {
+          "installation_mode" = "normal_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+        };
+        "{4853d046-c5a3-436b-bc36-220fd935ee1d}" = {
+          "installation_mode" = "normal_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/undoclosetabbutton/latest.xpi";
+        };
+        "tab-stash@condordes.net" = {
+          "installation_mode" = "normal_installed";
+          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/tab-stash/latest.xpi";
+        };
+      };
+    };
+  };
+
   # Enable CUPS to print documents.
   #services.printing.enable = true;
 
@@ -112,6 +143,14 @@
 
   # rtkit is optional but recommended
   security.rtkit.enable = true;
+
+  # Video accelaration
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-sdk # for older GPUs
+    ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.brian = {
@@ -156,10 +195,20 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = [ "brian" ]; # Allows all users by default. Can be [ "user1" "user2" ]
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
+  };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
