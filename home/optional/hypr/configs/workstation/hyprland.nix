@@ -248,10 +248,10 @@
     # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
     workspace = [
-      "name:thunderbird,monitor:DP-4"
-      "name:discord,monitor:DP-4"
-      "name:terminal,monitor:DP-4"
-      "name:winadmvm,monitor:DP-4"
+      "name:thunderbird,monitor:DP-2"
+      "name:discord,monitor:DP-2"
+      "name:terminal,monitor:DP-2"
+      "name:winadmvm,monitor:DP-2"
     ];
 
     windowrulev2 = [

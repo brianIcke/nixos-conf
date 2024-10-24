@@ -12,8 +12,8 @@
       [ "~/.wallpapers/pixel_art_city.jpg" ];
 
     wallpaper = [
-      "DP-3,~/.wallpapers/pixel_art_city.jpg"
-      "DP-4,~/.wallpapers/pixel_art_city.jpg"
+      "DP-1,~/.wallpapers/pixel_art_city.jpg"
+      "DP-2,~/.wallpapers/pixel_art_city.jpg"
     ];
   };
 }
