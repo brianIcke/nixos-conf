@@ -96,31 +96,6 @@
   programs.alacritty.enable = true;
   programs.alacritty.settings = { shell = { program = "${pkgs.tmux}/bin/tmux"; args = [ "new-session" "-A" "-D" "-s" "main" ]; }; };
 
-  # Firefox
-  programs.firefox = {
-    enable = true;
-    policies = {
-      ExtensionSettings = {
-        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          "installation_mode" = "normal_installed";
-          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
-        };
-        "uBlock0@raymondhill.net" = {
-          "installation_mode" = "normal_installed";
-          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-        };
-        "{4853d046-c5a3-436b-bc36-220fd935ee1d}" = {
-          "installation_mode" = "normal_installed";
-          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/undoclosetabbutton/latest.xpi";
-        };
-        "tab-stash@condordes.net" = {
-          "installation_mode" = "normal_installed";
-          "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/tab-stash/latest.xpi";
-        };
-      };
-    };
-  };
-
   # ZSH
   programs.zsh = {
     enable = true;

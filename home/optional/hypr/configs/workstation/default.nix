@@ -5,6 +5,6 @@
     [
         ./hyprland.nix
         ./hyprpaper.nix
-        ../hypridle.nix
+        ./hypridle.nix
     ];
 }
