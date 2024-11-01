@@ -35,6 +35,7 @@
       })
 
     networkmanagerapplet
+    hyprshot
     wofi
     wofi-emoji
     copyq
