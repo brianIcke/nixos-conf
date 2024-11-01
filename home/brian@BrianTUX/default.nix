@@ -117,6 +117,10 @@
   # ZSH
   programs.zsh = {
     enable = true;
+    autosuggestion = {
+      enable = true;
+      highlight = "fg=#333332";
+    };
     initExtra = "fastfetch\neval \"$(zoxide init zsh)\"";
     shellAliases = {
       cat = "bat";
@@ -137,13 +141,9 @@
 
     plugins = [
       {
-        name = "zsh-autosuggestions";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-autosuggestions";
-          rev = "v0.7.0";
-          sha256 = "KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
-        };
+        name = "zsh-vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
     ];
 
