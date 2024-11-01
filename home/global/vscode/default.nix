@@ -11,7 +11,7 @@
         "platformio-ide.useBuiltinPIOCore" = "false";
         "workbench.colorTheme" = "Dracula Soft";
         "workbench.iconTheme" = "material-icon-theme";
-        "files.autoSave" = "on";
+        "files.autoSave" = "afterDelay";
 
         "[typescript]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
