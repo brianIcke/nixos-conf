@@ -199,7 +199,7 @@
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
       AllowUsers = [ "brian" ]; # Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = true;
       X11Forwarding = false;
@@ -209,6 +209,12 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
+
+  # WireGuard setup
+    networking.firewall = {
+    allowedUDPPorts = [ 51820 ]; # Clients and peers can use the same port, see listenport
+  };
+
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
