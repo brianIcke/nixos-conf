@@ -166,6 +166,7 @@
       anki-bin
       mpv
       inetutils
+      elixir
       #libsForQt5.qt5.qtwebsockets
       #wallpaper-engine-plasma
     ];
