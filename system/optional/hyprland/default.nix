@@ -7,6 +7,9 @@
   # Enable waybar
   programs.waybar.enable = true;
 
+  # Enable seahorse
+  programs.seahorse.enable = true;
+
   # Enable SDDM display manager
   services.displayManager.sddm = {
     enable = true;
@@ -30,7 +33,7 @@
         flavor = "mocha";
         font = "Noto Sans";
         fontSize = "9";
-        background = "${config.users.users.brian.home}/.wallpapers/cat-wallpaper.png";
+        background = "${/home/brian/.wallpapers/cat-wallpaper.png}";
         loginBackground = true;
       })
 
