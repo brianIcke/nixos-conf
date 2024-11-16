@@ -18,6 +18,8 @@
       go
       lua
       nixpkgs-fmt
+      vlc
+      makemkv
       unzip
       nodejs_20
       xclip
