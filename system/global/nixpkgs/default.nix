@@ -5,5 +5,6 @@
     [
         ./flakes-support.nix
         ./packages.nix
+        ./overlays.nix
     ];
 }
