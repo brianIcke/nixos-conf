@@ -146,6 +146,9 @@
     # Set subModifier key (programs+workspaces)
     "$subMod" = "$mainMod+SHIFT";
 
+    # Set modifier key (edit workspaces)
+    "$wsMod" = "ALT+Tab";
+
     # Set powerModifier key (power)
     "$powerMod" = "Control_L&Alt_L";
 
@@ -187,6 +190,9 @@
       "$subMod, S, workspace, name:steam"
       "$subMod, G, workspace, name:game"
       "$mainMod, Q, workspace, name:terminal"
+
+      # Move active workspace to monitor
+      "$wsMod, n, movecurrentworkspacetomonitor, +1"
 
       # Special workspaces
       "$subMod, H, togglespecialworkspace, magic"
@@ -232,6 +238,7 @@
       "$powerMod, P, exec, systemctl poweroff"
       "$powerMod, R, exec, systemctl reboot"
       "$powerMod, L, exec, hyprlock"
+
     ];
 
     ##############################
